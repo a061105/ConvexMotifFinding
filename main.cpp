@@ -1,16 +1,16 @@
 #include"incl_head.h"
-extern void ResOut( vector<vector<double>> W1);
-extern double LossfuncW1(	vector<vector<double>> CC,
-					vector<vector<double>> W1,
-					vector<vector<double>> W2,
-					vector<vector<double>> YY);
-extern vector<vector<double>> UpdateY(	vector<vector<double>> WW1,
-								vector<vector<double>> WW2,
-								vector<vector<double>> YY);
-extern vector<vector<double>> OptPhaseOne(	vector<vector<double>> CC,
-							vector<vector<double>> WW1,
-							vector<vector<double>> WW2,
-							vector<vector<double>> YY,
+extern void			ResOut( MAT_D W1);
+extern double LossfuncW1(	MAT_D CC,
+							MAT_D W1,
+							MAT_D W2,
+							MAT_D YY);
+extern		MAT_D UpdateY(	MAT_D WW1,
+							MAT_D WW2,
+							MAT_D YY);
+extern	MAT_D OptPhaseOne(  MAT_D CC,
+							MAT_D WW1,
+							MAT_D WW2,
+							MAT_D YY,
 							int num_k);
 
 int main()
@@ -20,10 +20,10 @@ int main()
 	string    word="apple";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
-	vector<vector<double>> C(J,col1);
+	MAT_D C(J,col1);
 	C[0].assign(col0.begin(),col0.end());
 	// initialize W1, all unassigned
-	vector<vector<double>> W1(C);
+	MAT_D W1(C);
 	cout<<"Initial is:"<<endl;
 	ResOut(W1);
 	// continue construct C
@@ -40,7 +40,7 @@ int main()
 	}
 	
 	// initialize W2, all optimal
-	vector<vector<double>> W2(J,col1);
+	MAT_D W2(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
@@ -52,7 +52,7 @@ int main()
 	}
 	cout<<"Optimal is:"<<endl;
 	ResOut(W2);
-	vector<vector<double>> Y(J,col1);  // initialize Y with all zeros
+	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		
@@ -60,7 +60,7 @@ int main()
 			int k_num=Iter+1;
 		W1=OptPhaseOne(C,W1,W2,Y,k_num);
 		//cout<<"Inner Step"<<Inner_iter+1<<":"<<endl;
-		//cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
+		cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
 		}
 		Y=UpdateY(W1,W2,Y);
 		cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
