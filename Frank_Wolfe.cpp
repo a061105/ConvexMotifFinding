@@ -1,12 +1,12 @@
 #include"incl_head.h"
 
-vector<int> Frank_Wolfe(	vector<vector<double>> Gradf)
+vector<int> Frank_Wolfe(	MAT_D Gradf)
 {
 	vector<int> R(Tseq,MAX_NUMBER);
 	vector<int> col_int(Tseq,0);
 	vector<double> col_dou(Tseq,MAX_NUMBER);
 	vector<vector<int>> B(J,col_int);
-	vector<vector<double>> M(J,col_dou);
+	MAT_D M(J,col_dou);
 	// initialize M
 	M[0][0]=Gradf[0][0];// Un
 	for(int i=0; i<KG; i++){   // a1_0,a1_1,b1_0,b1_1...z1_1
@@ -85,9 +85,11 @@ vector<int> Frank_Wolfe(	vector<vector<double>> Gradf)
 	}
 	
 	// Generating R: descent direction
+	double M_max=MAX_NUMBER;
 	for(int i=0; i<J; i++){   // RT=argmin(M(T,S))
-		if(R[Tseq-1]>M[i][Tseq-1]){
-			R[Tseq-1]=B[i][Tseq-1];
+		if(M_max>M[i][Tseq-1]){
+			R[Tseq-1]=i;
+			M_max=M[i][Tseq-1];
 		}
 	}
 	for(int t=Tseq-1; t>=1; t--){
