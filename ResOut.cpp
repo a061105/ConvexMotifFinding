@@ -1,6 +1,6 @@
 #include"incl_head.h"
 
-void ResOut( vector<vector<double>> W1){
+void ResOut( MAT_D W1){
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){
 		int Max_stat=0;
 		double Max_entree=0;
@@ -28,14 +28,14 @@ void ResOut( vector<vector<double>> W1){
 }
 	
 
-double LossfuncW1(	vector<vector<double>> CC,
-					vector<vector<double>> W1,
-					vector<vector<double>> W2,
-					vector<vector<double>> YY){
+double LossfuncW1(	MAT_D CC,
+					MAT_D W1,
+					MAT_D W2,
+					MAT_D YY){
 	double loss=0;
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
-			loss+=CC[j][t]*W1[j][t];//+mu*pow((W1[j][t]-W2[j][t]-YY[j][t]/mu),2);
+			loss+=CC[j][t]*W1[j][t]+mu*pow((W1[j][t]-W2[j][t]+YY[j][t]/mu),2);
 		}
 	}
 	return loss;
