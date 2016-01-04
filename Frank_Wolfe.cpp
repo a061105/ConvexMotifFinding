@@ -5,7 +5,7 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 	vector<int> R(Tseq,MAX_NUMBER);
 	vector<int> col_int(Tseq,0);
 	vector<double> col_dou(Tseq,MAX_NUMBER);
-	vector<vector<int>> B(J,col_int);
+	vector<vector<int> > B(J,col_int);
 	MAT_D M(J,col_dou);
 	// initialize M
 	M[0][0]=Gradf[0][0];// Un
