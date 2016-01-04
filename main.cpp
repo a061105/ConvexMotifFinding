@@ -12,6 +12,11 @@ extern	MAT_D OptPhaseOne(  MAT_D CC,
 							MAT_D WW2,
 							MAT_D YY,
 							int num_k);
+extern MAT_D OptPhaseTwo(	MAT_D CC,
+							MAT_D WW1,
+							MAT_D WW2,
+							MAT_D YY,
+							int num_k);
 
 int main()
 {
@@ -26,6 +31,8 @@ int main()
 	MAT_D W1(C);
 	cout<<"Initial is:"<<endl;
 	ResOut(W1);
+	// Initialize W2 -----Unassigned
+	MAT_D W2(C);
 	// continue construct C
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
@@ -39,8 +46,9 @@ int main()
 		}
 	}
 	
-	// initialize W2, all optimal
-	MAT_D W2(J,col1);
+
+	//----------------------initialize W2, all optimal--------------------------
+	/*MAT_D W2(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
@@ -51,17 +59,26 @@ int main()
 		}
 	}
 	cout<<"Optimal is:"<<endl;
-	ResOut(W2);
+	ResOut(W2);*/
+	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
-		
+		// Optimization Phase One
+		cout<<"Phase One"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W1=OptPhaseOne(C,W1,W2,Y,k_num);
-		//cout<<"Inner Step"<<Inner_iter+1<<":"<<endl;
 		cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
 		}
+		//Optimization Phase Two
+		cout<<"Phase Two"<<endl;
+		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
+			int k_num=Iter+1;
+		W2=OptPhaseTwo(C,W1,W2,Y,k_num);
+		cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
+		}
+		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
 		cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		cout<<"---Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<"---"<<endl;

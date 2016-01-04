@@ -16,11 +16,10 @@ void ResOut( MAT_D W1){
 			int charnum=(Max_stat-1)/(2*L);
 			int inner_stat=Max_stat%(2*L);
 			int One_or_zero=(Max_stat%(2*L)+1)%2;  
-			char AA='a'+charnum;
+			int AA=1+charnum;
 			int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
-			char Onezero='0'+One_or_zero;
-			cout<<AA<<"_"<<Onezero<<"_"<<Inner_seq<<" "<<endl;
+			cout<<"P"<<AA<<"_"<<One_or_zero<<"_"<<Inner_seq<<endl;
 		}
 	}
 	cout<<endl;
@@ -42,4 +41,23 @@ double LossfuncW1(	MAT_D CC,
 }
 					
 
-			
+// Report descent direction after Franke-Wolfe
+void Report_dir(vector<int> AT){
+	cout<<"Current direction is :"<<endl;
+	for(int t=0; t<Tseq; t++){
+		int Max_stat=AT[t];
+		if(Max_stat==0){
+			cout<<"Un"<<endl;
+		}else{
+			int charnum=(Max_stat-1)/(2*L);
+			int inner_stat=Max_stat%(2*L);
+			int One_or_zero=(Max_stat%(2*L)+1)%2;  
+			int AA=1+charnum;
+			int Inner_seq=(Max_stat%(2*L)+1)/2;
+				if(Inner_seq==0) Inner_seq=L;
+			cout<<"p"<<AA<<"_"<<One_or_zero<<"_"<<Inner_seq<<endl;
+		}
+		
+	}
+	return;
+}			

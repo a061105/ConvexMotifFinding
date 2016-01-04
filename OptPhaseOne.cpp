@@ -3,9 +3,13 @@ MAT_D Gradf(		MAT_D CC,
 					MAT_D WW1,
 					MAT_D WW2,
 					MAT_D YY);
+MAT_D Gradf(		MAT_D WW1,
+					MAT_D WW2,
+					MAT_D YY);
 
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
-void Report_dir(vector<int> AT);
+extern void Report_dir(vector<int> AT);
+extern MAT_D GroupConsDir(MAT_D Gradw2);
 
 //----------------------Update W1------------------------------
 MAT_D OptPhaseOne(	MAT_D CC,
@@ -35,6 +39,30 @@ MAT_D OptPhaseOne(	MAT_D CC,
 	return WW1;
 }
 
+//----------------------Update W2------------------------------
+MAT_D OptPhaseTwo(	MAT_D CC,
+					MAT_D WW1,
+					MAT_D WW2,
+					MAT_D YY,
+					int num_k)
+{
+	
+	MAT_D Gradw2;
+	MAT_D W2dir;
+	double Step_size=2.0/(num_k+2);
+	Gradw2=Gradf(WW1,WW2,YY);
+	W2dir=GroupConsDir(Gradw2);
+	//Report_dir(Aton);
+	// update W2
+	for(int t=0; t<Tseq; t++){
+		for(int j=0; j<J; j++){
+			WW2[j][t]+=Step_size*W2dir[j][t];
+		}
+	}
+	return WW2;
+}
+
+//Compute Original Grad for W1
 MAT_D Gradf(	MAT_D CC,
 				MAT_D WW1,
 				MAT_D WW2,
@@ -48,7 +76,22 @@ MAT_D Gradf(	MAT_D CC,
 	}
 	return GG;
 }
+// reload Gradf for W2
+MAT_D Gradf(	MAT_D WW1,
+				MAT_D WW2,
+				MAT_D YY)
+{
+	vector<double> col_dou(Tseq,0.0);
+	MAT_D GG(J,col_dou);
+	for(int i=0; i<Tseq; i++){
+		for(int j=0; j<J; j++){
+			GG[j][i]+=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
+		}
+	}
+	return GG;
+}
 
+// Update Y=Y+mu*(W1-W2)
 MAT_D UpdateY(	MAT_D WW1,
 				MAT_D WW2,
 				MAT_D YY){
@@ -61,23 +104,3 @@ MAT_D UpdateY(	MAT_D WW1,
 	return YR;
 }
 
-void Report_dir(vector<int> AT){
-	cout<<"Current direction is :"<<endl;
-	for(int t=0; t<Tseq; t++){
-		int Max_stat=AT[t];
-		if(Max_stat==0){
-			cout<<"Un"<<" "<<endl;
-		}else{
-			int charnum=(Max_stat-1)/(2*L);
-			int inner_stat=Max_stat%(2*L);
-			int One_or_zero=(Max_stat%(2*L)+1)%2;  
-			char AA='a'+charnum;
-			int Inner_seq=(Max_stat%(2*L)+1)/2;
-				if(Inner_seq==0) Inner_seq=L;
-			char Onezero='0'+One_or_zero;
-			cout<<AA<<"_"<<Onezero<<"_"<<Inner_seq<<" "<<endl;
-		}
-		
-	}
-	return;
-}

@@ -97,3 +97,16 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 	}
 	return R;
 }
+
+
+MAT_D GroupConsDir(MAT_D Gradw2){
+
+	int Lopt=2*Kopt*L+1;
+	for(int i=0; i<Tseq; i++){
+		for(int j=Lopt; j<J; j++){
+			Gradw2[j][i]=0;
+		}
+	}
+
+	return Gradw2;
+}
