@@ -1,20 +1,21 @@
 #include"incl_head.h"
-vector<vector<double>> Gradf(		vector<vector<double>> CC,
-					vector<vector<double>> WW1,
-					vector<vector<double>> WW2,
-					vector<vector<double>> YY);
+MAT_D Gradf(		MAT_D CC,
+					MAT_D WW1,
+					MAT_D WW2,
+					MAT_D YY);
 
-extern vector<int> Frank_Wolfe(	vector<vector<double>> Gradf);
+extern vector<int> Frank_Wolfe(	MAT_D Gradf);
 void Report_dir(vector<int> AT);
 
-vector<vector<double>> OptPhaseOne(	vector<vector<double>> CC,
-					vector<vector<double>> WW1,
-					vector<vector<double>> WW2,
-					vector<vector<double>> YY,
+//----------------------Update W1------------------------------
+MAT_D OptPhaseOne(	MAT_D CC,
+					MAT_D WW1,
+					MAT_D WW2,
+					MAT_D YY,
 					int num_k)
 {
 	
-	vector<vector<double>> Gradw1;
+	MAT_D Gradw1;
 	vector<int> Aton;
 	double Step_size=2.0/(num_k+2);
 	
@@ -34,12 +35,12 @@ vector<vector<double>> OptPhaseOne(	vector<vector<double>> CC,
 	return WW1;
 }
 
-vector<vector<double>> Gradf(	vector<vector<double>> CC,
-				vector<vector<double>> WW1,
-				vector<vector<double>> WW2,
-				vector<vector<double>> YY)
+MAT_D Gradf(	MAT_D CC,
+				MAT_D WW1,
+				MAT_D WW2,
+				MAT_D YY)
 {
-	vector<vector<double>> GG=CC;
+	MAT_D GG=CC;
 	for(int i=0; i<Tseq; i++){
 		for(int j=0; j<J; j++){
 			GG[j][i]+=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
@@ -48,10 +49,10 @@ vector<vector<double>> Gradf(	vector<vector<double>> CC,
 	return GG;
 }
 
-vector<vector<double>> UpdateY(	vector<vector<double>> WW1,
-								vector<vector<double>> WW2,
-								vector<vector<double>> YY){
-	vector<vector<double>> YR(YY);
+MAT_D UpdateY(	MAT_D WW1,
+				MAT_D WW2,
+				MAT_D YY){
+	MAT_D YR(YY);
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			YR[j][t]+=mu*(WW1[j][t]-WW2[j][t]);
