@@ -8,10 +8,10 @@
 #include<stdio.h>
 #define MAX_NUMBER 999999
 using namespace std;
-typedef vector<vector<double>> MAT_D; 
+typedef vector<vector<double> > MAT_D; 
 
 	const int word_length=5,L=8;
-	const int KG=64,Kopt=26;
+	const int KG=26,Kopt=26;
 	const int J=2*KG*L+1,Tseq=word_length*L;
-	const int update_num=15, Inner_num=15;
+	const int update_num=1, Inner_num=15;
 	const double mu=0.1,cost_un=1.0,cost_mis=1.0;

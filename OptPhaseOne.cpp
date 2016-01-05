@@ -56,7 +56,7 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	// update W2
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
-			WW2[j][t]+=Step_size*W2dir[j][t];
+			WW2[j][t]=WW2[j][t]*(1.0-Step_size)+W2dir[j][t]*Step_size;
 		}
 	}
 	return WW2;
@@ -85,7 +85,7 @@ MAT_D Gradf(	MAT_D WW1,
 	MAT_D GG(J,col_dou);
 	for(int i=0; i<Tseq; i++){
 		for(int j=0; j<J; j++){
-			GG[j][i]+=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
+			GG[j][i]-=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
 		}
 	}
 	return GG;

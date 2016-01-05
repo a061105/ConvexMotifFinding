@@ -102,11 +102,42 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 MAT_D GroupConsDir(MAT_D Gradw2){
 
 	int Lopt=2*Kopt*L+1;
-	for(int i=0; i<Tseq; i++){
-		for(int j=Lopt; j<J; j++){
-			Gradw2[j][i]=0;
-		}
-	}
-
-	return Gradw2;
+	vector<double> col0(Tseq,0);
+	MAT_D R2(J,col0);
+	// Finding a pattern for each pattern slot pa_num=0,1,2 ... Kopt-1
+	for(int pa_num=0; pa_num<Kopt; pa_num++){
+		//cout<<"P"<<pa_num+1<<": ";
+		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
+		for(int dig=0; dig<L; dig++){
+			int choose_zero=0, choose_one=0;
+			int zero_slot=pa_L+2*dig;
+			int one_slot=zero_slot+1;
+			vector<double> zero_vec,one_vec;
+			for(int t=0; t<Tseq; t++){
+				// Calculating score of choosing zero & formulating dir
+				if(Gradw2[zero_slot][t]<0){
+					choose_zero++;
+					zero_vec.push_back(1.0);
+				}else{
+					zero_vec.push_back(0);
+				}
+				// Calculating score of choosing one & formulating dir
+				if(Gradw2[one_slot][t]<0){
+					choose_one++;
+					one_vec.push_back(1.0);
+				}else{
+					one_vec.push_back(0);
+				}
+			}
+			if(choose_zero>=choose_one){// then choose zero
+				R2[zero_slot].assign(zero_vec.begin(),zero_vec.end());
+				//cout<<"0";
+			}else{						// choose one
+				R2[one_slot].assign(one_vec.begin(),one_vec.end());
+				//cout<<"1";
+			}
+		}// end for this digit
+		//cout<<endl;
+	}//end for this pattern
+	return R2;
 }
