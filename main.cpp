@@ -20,9 +20,9 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 
 int main()
 {
-	string	    Seq="0110000101110000011100000110110001100101";
-	string    InSeq="0110000101110000011100000110110001100101";
-	string    word="pp";
+	string	    Seq="0110000101100001011000010110000101100001";
+	string    InSeq="0110000101100001011000010110000101100001";
+	string    word="aaaaa";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
