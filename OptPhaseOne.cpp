@@ -6,7 +6,15 @@ MAT_D Gradf(		MAT_D CC,
 MAT_D Gradf(		MAT_D WW1,
 					MAT_D WW2,
 					MAT_D YY);
-
+extern double OptStep1( MAT_D CC,
+						MAT_D W1,
+						MAT_D W2,
+						MAT_D YY,
+						vector<int> Aton);
+extern double OptStep1( MAT_D W1,
+						MAT_D W2,
+						MAT_D YY,
+						MAT_D DIR);
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
 extern void Report_dir(vector<int> AT);
 extern MAT_D GroupConsDir(MAT_D Gradw2);
@@ -25,6 +33,10 @@ MAT_D OptPhaseOne(	MAT_D CC,
 	
 	Gradw1=Gradf(CC,WW1,WW2,YY);
 	Aton=Frank_Wolfe(Gradw1);
+	Step_size=OptStep1(CC,WW1,WW2,YY,Aton);
+	if(Step_size>1) Step_size=1.0;
+	if(Step_size<0) Step_size=0;
+	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W1
 	for(int t=0; t<Tseq; t++){
@@ -52,6 +64,10 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	double Step_size=2.0/(num_k+2);
 	Gradw2=Gradf(WW1,WW2,YY);
 	W2dir=GroupConsDir(Gradw2);
+	Step_size=OptStep1(WW1,WW2,YY,W2dir);
+	if(Step_size>1) Step_size=1.0;
+	if(Step_size<0) Step_size=0;
+	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W2
 	for(int t=0; t<Tseq; t++){

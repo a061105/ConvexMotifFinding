@@ -35,6 +35,7 @@ double LossfuncW1(	MAT_D CC,
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			loss+=CC[j][t]*W1[j][t]+mu*pow((W1[j][t]-W2[j][t]+YY[j][t]/mu),2);
+			loss-=mu*pow((YY[j][t]/mu),2);
 		}
 	}
 	return loss;
