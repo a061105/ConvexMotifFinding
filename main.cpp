@@ -20,9 +20,9 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 
 int main()
 {
-	string	    Seq="0110000101110000011100000110110001100101";
-	string    InSeq="0110000101110000011100000110110001100101";
-	string    word="apple";
+	string	    Seq="011000010110000101110000011100000110110001100101";
+	string    InSeq="011000010110000101110000011100000110110001100101";
+	string    word="aapple";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -36,7 +36,7 @@ int main()
 	// continue construct C adding a little bias towards rank lower patterns
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
-		double eps=0.001;
+		double eps=0.01;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
