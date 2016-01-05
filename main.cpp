@@ -36,7 +36,7 @@ int main()
 	// continue construct C adding a little bias towards rank lower patterns
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
-		double eps=0.01;
+		double eps=0.001;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
