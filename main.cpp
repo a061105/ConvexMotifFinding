@@ -20,9 +20,9 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 
 int main()
 {
-	string	    Seq="011000010110000101110000011100000110110001100101";
-	string    InSeq="011000010110000101110000011100000110110001100101";
-	string    word="aapple";
+	string	    Seq="0110000101110000011100000110110001100101";
+	string    InSeq="0110000101110000011100000110110001100101";
+	string    word="apple";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -85,7 +85,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		cout<<"---Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<"---"<<endl;
-		//ResOut(W1);
+		ResOut(W1);
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);

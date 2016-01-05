@@ -1,4 +1,5 @@
 #include"incl_head.h"
+extern void Report_dir(vector<int> AT);
 
 vector<int> Frank_Wolfe(	MAT_D Gradf)
 {
@@ -81,6 +82,28 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 					}
 				}
 			}
+			for(int i=0; i<KG+1; i++){   // for an end char_digit aL(15) bL(31)
+				int s1=2*(ch+1)*L-1;
+				int s2;
+				if(i==0){
+					s2=0;				// s2 can have choice of every U(0)
+					if( M[s2][t+1]>M[s1][t]+Gradf[s2][t+1] ){ 
+						M[s2][t+1]=M[s1][t]+Gradf[s2][t+1];
+						B[s2][t+1]=s1;
+					}
+				}else{
+					s2=2*(i-1)*L+1;		// s2 can have choice of every a1_0(1) a1_1(2) b1(17)...
+					if( M[s2][t+1]>M[s1][t]+Gradf[s2][t+1] ){ 
+						M[s2][t+1]=M[s1][t]+Gradf[s2][t+1];
+						B[s2][t+1]=s1;
+					}
+					s2++;
+					if( M[s2][t+1]>M[s1][t]+Gradf[s2][t+1] ){ 
+						M[s2][t+1]=M[s1][t]+Gradf[s2][t+1];
+						B[s2][t+1]=s1;
+					}
+				}
+			}
 		}
 	}
 	
@@ -95,6 +118,7 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 	for(int t=Tseq-1; t>=1; t--){
 		R[t-1]=B[R[t]][t];
 	}
+	//Report_dir(R);
 	return R;
 }
 
