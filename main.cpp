@@ -25,9 +25,9 @@ extern double DisToOne(		MAT_D WW1);
 
 int main()
 {
-	string	    Seq="011000010111000001110000011011000110110001101100";
-	string    InSeq="011000010111000001110000011011000110110001101100";
-	string    word="applll";
+	string	    Seq="011000010111000001110000011100000110010101100101011001010110010101100101";
+	string    InSeq="011000010111000001110000011100000110010101100101011001010110010101100101";
+	string    word="cbbbaaaaa";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -40,9 +40,9 @@ int main()
 	MAT_D W2(C);
 	//adding a little random bias 
 	vector<double> adderr(KG,0.0);
-	double eps=0.005;
+	double eps=0.05;
 	for(int k=0; k<KG; k++){
-		adderr[k]=random*eps;
+		adderr[k]=eps*random;
 	}
 	// continue construct C 
 	for(int t=0; t<Tseq; t++){
@@ -61,7 +61,7 @@ int main()
 	
 
 	//----------------------initialize W2, all optimal--------------------------
-	/*MAT_D Wopt(J,col1);
+	MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
@@ -72,7 +72,7 @@ int main()
 		}
 	}
 	cout<<"Optimal is:"<<endl;
-	ResOut(Wopt);*/
+	ResOut(Wopt);
 	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
@@ -95,7 +95,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<endl;
+		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<"---"<<W1[1][0]<<"  "<<W1[17][0]<<"   "<<W1[33][0]<<endl;
 		if(diffW12<1e-5) break;
 		//ResOut(W1);
 	}
@@ -103,7 +103,7 @@ int main()
 	ResOut(W1);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2);
-	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt);
+	cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W1)<<endl;
 	return 0;
 }
