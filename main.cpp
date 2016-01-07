@@ -25,9 +25,9 @@ extern double DisToOne(		MAT_D WW1);
 
 int main()
 {
-	string	    Seq="0110000101110000011100000111000001101100011011000110110001101100";
-	string    InSeq="0110000101110000011100000111000001101100011011000110110001101100";
-	string    word="apppllll";
+	string	    Seq="011000010111000001110000011011000110110001101100";
+	string    InSeq="011000010111000001110000011011000110110001101100";
+	string    word="applll";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -38,17 +38,22 @@ int main()
 	ResOut(W1);
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
-	// continue construct C adding a little bias towards rank lower patterns
+	//adding a little random bias 
+	vector<double> adderr(KG,0.0);
+	double eps=0.005;
+	for(int k=0; k<KG; k++){
+		adderr[k]=random*eps;
+	}
+	// continue construct C 
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
-		double eps=0.01;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+eps*(kk+random);
+					C[(1+2*L*kk)+j][t]=cost_mis+adderr[kk];
 				}else{
-					C[(1+2*L*kk)+j][t]=eps*(kk+random);
+					C[(1+2*L*kk)+j][t]=adderr[kk];
 				}
 			}
 		}
