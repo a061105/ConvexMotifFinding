@@ -21,6 +21,7 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 							int num_k);
 extern double diff(			MAT_D WW1,
 							MAT_D WW2);
+extern double DisToOne(		MAT_D WW1);
 
 int main()
 {
@@ -96,5 +97,6 @@ int main()
 	cout<<"End output W2:"<<endl;
 	ResOut(W2);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt);
+	cout<<"Max entree distance to one:"<<DisToOne(W1)<<endl;
 	return 0;
 }

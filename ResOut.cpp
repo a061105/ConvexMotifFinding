@@ -88,3 +88,14 @@ void Report_dir(vector<int> AT){
 	return;
 }			
 
+double DisToOne(MAT_D WW1){
+	double maxdiff=0;
+	for(int j=0; j<J; j++){
+		for(int t=0; t<Tseq; t++){
+			if(abs(WW1[j][t]-1.0)>maxdiff && WW1[j][t]>1.0/Kopt){
+				maxdiff=abs(WW1[j][t]-1.0);
+			}
+		}
+	}
+	return maxdiff;
+}
