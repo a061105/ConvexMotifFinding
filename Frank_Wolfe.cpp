@@ -129,7 +129,7 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 	vector<double> col0(Tseq,0);
 	MAT_D R2(J,col0);
 	// Finding a pattern for each pattern slot pa_num=0,1,2 ... Kopt-1
-	for(int pa_num=0; pa_num<Kopt; pa_num++){
+	for(int pa_num=0; pa_num<KG; pa_num++){
 		//cout<<"P"<<pa_num+1<<": ";
 		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
 		for(int dig=0; dig<L; dig++){
