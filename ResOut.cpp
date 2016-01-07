@@ -35,10 +35,35 @@ double LossfuncW1(	MAT_D CC,
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			loss+=CC[j][t]*W1[j][t]+mu*pow((W1[j][t]-W2[j][t]+YY[j][t]/mu),2);
-			loss-=mu*pow((YY[j][t]/mu),2);
+			//loss-=mu*pow((YY[j][t]/mu),2);
 		}
 	}
 	return loss;
+}
+
+// reload lossfunc
+double LossfuncW1(	MAT_D CC,
+					MAT_D W1){
+	double loss=0;
+	for(int t=0; t<Tseq; t++){
+		for(int j=0; j<J; j++){
+			loss+=CC[j][t]*W1[j][t];;
+		}
+	}
+	return loss;
+}
+
+double diff(MAT_D WW1,
+			MAT_D WW2){
+	double maxdiff=0;
+	for(int j=0; j<J; j++){
+		for(int t=0; t<Tseq; t++){
+			if(abs(WW1[j][t]-WW2[j][t])>maxdiff){
+				maxdiff=abs(WW1[j][t]-WW2[j][t]);
+			}
+		}
+	}
+	return maxdiff;
 }
 					
 

@@ -4,6 +4,8 @@ extern double LossfuncW1(	MAT_D CC,
 							MAT_D W1,
 							MAT_D W2,
 							MAT_D YY);
+extern double LossfuncW1(	MAT_D CC,
+							MAT_D W1);
 extern		MAT_D UpdateY(	MAT_D WW1,
 							MAT_D WW2,
 							MAT_D YY);
@@ -17,12 +19,14 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 							MAT_D WW2,
 							MAT_D YY,
 							int num_k);
+extern double diff(			MAT_D WW1,
+							MAT_D WW2);
 
 int main()
 {
-	string	    Seq="100001110000110000101100100101";
-	string    InSeq="100001110000110000101100100101";
-	string    word="apple";
+	string	    Seq="011000010111000001110000011011000110110001101100";
+	string    InSeq="011000010111000001110000011011000110110001101100";
+	string    word="applll";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -36,7 +40,7 @@ int main()
 	// continue construct C adding a little bias towards rank lower patterns
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
-		double eps=0.015;
+		double eps=0.003;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
@@ -51,18 +55,18 @@ int main()
 	
 
 	//----------------------initialize W2, all optimal--------------------------
-	/*MAT_D W2(J,col1);
+	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
 			int t=(i-1)*L+j-1;		//pisition in seq
 			int dig=0;
 			if(Seq[t]=='1') dig=1;	//correct assign should be 1 or 0
-			W2[(2*j-2)+dig+(2*L*index1+1)][t]=1;
+			Wopt[(2*j-2)+dig+(2*L*index1+1)][t]=1;
 		}
 	}
 	cout<<"Optimal is:"<<endl;
-	ResOut(W2);*/
+	ResOut(Wopt);*/
 	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
@@ -72,24 +76,25 @@ int main()
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W1=OptPhaseOne(C,W1,W2,Y,k_num);
-		cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
+		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diff(W1,W2)<<endl;
 		}
 		//Optimization Phase Two
 		cout<<"Phase Two"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W2=OptPhaseTwo(C,W1,W2,Y,k_num);
-		cout<<"Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<endl;
+		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diff(W1,W2)<<endl;
 		}
 		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
 		cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
-		cout<<"---Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<"---"<<endl;
+		cout<<"---Loss func value:"<<LossfuncW1(C,W1)<<"---"<<endl;
 		//ResOut(W1);
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2);
+	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt);
 	return 0;
 }

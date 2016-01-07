@@ -17,6 +17,7 @@ double OptStep1(MAT_D CC,
 			MuAB+=MuAjt*Bjt;
 		}
 	}
+	if(MuBF2<1e-6) MuBF2=1e-6;
 	return -(MuAB+CB)/(MuBF2);
 }
 
