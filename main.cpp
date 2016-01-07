@@ -20,8 +20,8 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 
 int main()
 {
-	string	    Seq="0110000101110000011100000110110001100101";
-	string    InSeq="0110000101110000011100000110110001100101";
+	string	    Seq="100001110000110000101100100101";
+	string    InSeq="100001110000110000101100100101";
 	string    word="apple";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
@@ -36,7 +36,7 @@ int main()
 	// continue construct C adding a little bias towards rank lower patterns
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
-		double eps=0.001;
+		double eps=0.015;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
@@ -85,7 +85,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		cout<<"---Loss func value:"<<LossfuncW1(C,W1,W2,Y)<<"---"<<endl;
-		ResOut(W1);
+		//ResOut(W1);
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);

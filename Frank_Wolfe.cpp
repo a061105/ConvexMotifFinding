@@ -163,5 +163,6 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 		}// end for this digit
 		//cout<<endl;
 	}//end for this pattern
+	cout<<" ";
 	return R2;
 }
