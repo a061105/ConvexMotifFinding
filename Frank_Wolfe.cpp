@@ -15,6 +15,7 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 		M[2*L*i+2][0]=Gradf[2*L*i+2][0];
 	}
 	// using DP to find argmin<Gradf,W>
+    // TODO: change order of loops
 	for(int t=0; t<Tseq-1; t++){		// for all digits
 		// for unassigned case
 		for(int i=0; i<KG+1; i++){   // for an Un

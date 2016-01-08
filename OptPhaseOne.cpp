@@ -39,6 +39,7 @@ MAT_D OptPhaseOne(	MAT_D CC,
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W1
+    // TODO: change order of sequence
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			WW1[j][t]*=(1.0-Step_size);
