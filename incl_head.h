@@ -2,6 +2,7 @@
 #define FRACTION_H
 #endif
 #include<iostream>
+#include<time.h>
 #include<cmath>
 #include<string>
 #include<vector>
@@ -9,7 +10,7 @@
 #include<stdlib.h>
 #include<algorithm>
 #include <functional>
-#define random ((rand()%1000)/1000.0)
+#define random  rand()/(double)(RAND_MAX); 
 #define MAX_NUMBER 999999
 using namespace std;
 typedef vector<vector<double> > MAT_D; 

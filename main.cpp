@@ -39,16 +39,18 @@ int main()
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
 	//adding a little random bias on patterns
-	vector<double> adderr(KG,0.0);
-	double eps=0.03;
-	for(int k=0; k<KG; k++){
-		adderr[k]=eps*random;
-	}
 	//adding a littel random bias on sequential
-	vector<double> adderr2(word_length,0.0);
-	for(int cha=0; cha<word_length; cha++){
-		adderr2[cha]=eps*(1.0-random);
+	vector<double> Errcol(KG,0.0);
+	MAT_D adderr(word_length,Errcol);
+	double eps=0.003*(word_length*KG);
+	srand((unsigned)time(0));
+	for(int k=0; k<KG; k++){
+		for(int cha=0; cha<word_length; cha++){
+		adderr[cha][k]=eps*random;
+		}
 	}
+	
+	
 	// continue construct C 
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
@@ -57,9 +59,9 @@ int main()
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+adderr[kk]+adderr2[cha];
+					C[(1+2*L*kk)+j][t]=cost_mis+adderr[cha][kk];
 				}else{
-					C[(1+2*L*kk)+j][t]=adderr[kk]+adderr2[cha];
+					C[(1+2*L*kk)+j][t]=adderr[cha][kk];
 				}
 			}
 		}
@@ -101,7 +103,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<"---"<<W1[1][0]<<"  "<<W1[17][0]<<"   "<<W1[33][0]<<endl;
+		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<endl;
 		if(diffW12<1e-5) break;
 		//ResOut(W1);
 	}
