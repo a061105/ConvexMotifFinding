@@ -25,9 +25,9 @@ extern double DisToOne(		MAT_D WW1);
 
 int main()
 {
-	string	    Seq="011000010111000001110000011100000110010101100101011001010110010101100101";
-	string    InSeq="011000010111000001110000011100000110010101100101011001010110010101100101";
-	string    word="cbbbaaaaa";
+	string	    Seq="0110000101110000011100000110110001100101";
+	string    InSeq="0110000101110000011100000110110001100101";
+	string    word="apple";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -38,22 +38,28 @@ int main()
 	ResOut(W1);
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
-	//adding a little random bias 
+	//adding a little random bias on patterns
 	vector<double> adderr(KG,0.0);
-	double eps=0.05;
+	double eps=0.03;
 	for(int k=0; k<KG; k++){
 		adderr[k]=eps*random;
+	}
+	//adding a littel random bias on sequential
+	vector<double> adderr2(word_length,0.0);
+	for(int cha=0; cha<word_length; cha++){
+		adderr2[cha]=eps*(1.0-random);
 	}
 	// continue construct C 
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
+		int cha=t/L;
 		if(InSeq[t]=='1') dig=1;
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+adderr[kk];
+					C[(1+2*L*kk)+j][t]=cost_mis+adderr[kk]+adderr2[cha];
 				}else{
-					C[(1+2*L*kk)+j][t]=adderr[kk];
+					C[(1+2*L*kk)+j][t]=adderr[kk]+adderr2[cha];
 				}
 			}
 		}
@@ -61,7 +67,7 @@ int main()
 	
 
 	//----------------------initialize W2, all optimal--------------------------
-	MAT_D Wopt(J,col1);
+	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
@@ -72,7 +78,7 @@ int main()
 		}
 	}
 	cout<<"Optimal is:"<<endl;
-	ResOut(Wopt);
+	ResOut(Wopt);*/
 	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
@@ -103,7 +109,7 @@ int main()
 	ResOut(W1);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2);
-	cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
+	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W1)<<endl;
 	return 0;
 }
