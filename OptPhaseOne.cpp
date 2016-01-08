@@ -71,6 +71,7 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W2
+    // TODO: change order of sequence
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			WW2[j][t]=WW2[j][t]*(1.0-Step_size)+W2dir[j][t]*Step_size;
@@ -86,6 +87,7 @@ MAT_D Gradf(	MAT_D CC,
 				MAT_D YY)
 {
 	MAT_D GG=CC;
+    // TODO: change order of sequence
 	for(int i=0; i<Tseq; i++){
 		for(int j=0; j<J; j++){
 			GG[j][i]+=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
@@ -100,6 +102,7 @@ MAT_D Gradf(	MAT_D WW1,
 {
 	vector<double> col_dou(Tseq,0.0);
 	MAT_D GG(J,col_dou);
+    // TODO: change order of sequence
 	for(int i=0; i<Tseq; i++){
 		for(int j=0; j<J; j++){
 			GG[j][i]-=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
@@ -113,6 +116,7 @@ MAT_D UpdateY(	MAT_D WW1,
 				MAT_D WW2,
 				MAT_D YY){
 	MAT_D YR(YY);
+    // TODO: change order of sequence
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
 			YR[j][t]+=mu*(WW1[j][t]-WW2[j][t]);
