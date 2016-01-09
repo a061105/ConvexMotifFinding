@@ -22,12 +22,11 @@ extern MAT_D OptPhaseTwo(	MAT_D CC,
 extern double diff(			MAT_D WW1,
 							MAT_D WW2);
 extern double DisToOne(		MAT_D WW1);
+extern string Word2Bin(const string word);
 
 int main()
 {
-	string	    Seq="0110000101110000011100000110110001100101";
-	string    InSeq="0110000101110000011100000110110001100101";
-	string    word="apple";
+	string InSeq=Word2Bin(word);
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -39,14 +38,14 @@ int main()
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
 	//adding a little random bias on patterns
-	//adding a littel random bias on sequential
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.003*(word_length*KG);
+	double eps=0.03/KG;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
-		adderr[cha][k]=eps*random;
+			adderr[cha][k]=eps*random;
+			adderr[cha][k]+=eps*k;
 		}
 	}
 	
@@ -59,9 +58,9 @@ int main()
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+adderr[cha][kk];
+					C[(1+2*L*kk)+j][t]=cost_mis+adderr[0][kk];
 				}else{
-					C[(1+2*L*kk)+j][t]=adderr[cha][kk];
+					C[(1+2*L*kk)+j][t]=adderr[0][kk];
 				}
 			}
 		}
@@ -86,18 +85,14 @@ int main()
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		// Optimization Phase One
-		//cout<<"Phase One"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W1=OptPhaseOne(C,W1,W2,Y,k_num);
-		//cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diff(W1,W2)<<endl;
 		}
 		//Optimization Phase Two
-		//cout<<"Phase Two"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W2=OptPhaseTwo(C,W1,W2,Y,k_num);
-		//cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diff(W1,W2)<<endl;
 		}
 		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
@@ -105,7 +100,6 @@ int main()
 		double diffW12=diff(W1,W2);
 		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<endl;
 		if(diffW12<1e-5) break;
-		//ResOut(W1);
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);
