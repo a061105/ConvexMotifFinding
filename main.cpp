@@ -40,12 +40,12 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.03/KG;
+	double eps=0.02/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
 			adderr[cha][k]=eps*random;
-			adderr[cha][k]+=eps*k;
+			adderr[cha][k]+=2*eps*k;
 		}
 	}
 	
