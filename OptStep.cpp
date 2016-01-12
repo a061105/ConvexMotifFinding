@@ -37,8 +37,10 @@ vector<double> OptStep2(MAT_D W1,
 				AB+=Ajt*Bjt;
 			}
 		}
-		if(BF2<1e-6) BF2=1e-6;
+		if(BF2<1e-8) BF2=1e-8;
 		step[kk]=-AB/BF2;
+		if(step[kk]>1.0) step[kk]=1.0;
+		if(step[kk]<0) step[kk]=0;
 	}
 	return step;
 }
