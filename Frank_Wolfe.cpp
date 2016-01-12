@@ -71,12 +71,12 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 					}
 				}else{
 					s2=2*(i-1)*L+1;		// s2 can have choice of every a1_0(1) a1_1(2) b1(17)...
-					if( M[s2][t+1]>M[s1][t]+Gradf[s2][t+1] ){ 
+					if( M[s2][t+1]>=M[s1][t]+Gradf[s2][t+1] ){ 
 						M[s2][t+1]=M[s1][t]+Gradf[s2][t+1];
 						B[s2][t+1]=s1;
 					}
 					s2++;
-					if( M[s2][t+1]>M[s1][t]+Gradf[s2][t+1] ){ 
+					if( M[s2][t+1]>=M[s1][t]+Gradf[s2][t+1] ){ 
 						M[s2][t+1]=M[s1][t]+Gradf[s2][t+1];
 						B[s2][t+1]=s1;
 					}
@@ -163,5 +163,6 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 		}// end for this digit
 		//cout<<endl;
 	}//end for this pattern
+	
 	return R2;
 }

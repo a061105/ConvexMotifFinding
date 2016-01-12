@@ -11,7 +11,7 @@ extern double OptStep1( MAT_D CC,
 						MAT_D W2,
 						MAT_D YY,
 						vector<int> Aton);
-extern double OptStep1( MAT_D W1,
+extern vector<double> OptStep2( MAT_D W1,
 						MAT_D W2,
 						MAT_D YY,
 						MAT_D DIR);
@@ -61,19 +61,25 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	
 	MAT_D Gradw2;
 	MAT_D W2dir;
-	double Step_size=2.0/(num_k+2);
+	vector<double> Step_size(KG,2.0/(num_k+2));
 	Gradw2=Gradf(WW1,WW2,YY);
 	W2dir=GroupConsDir(Gradw2);
-	Step_size=OptStep1(WW1,WW2,YY,W2dir);
-	if(Step_size>1) Step_size=1.0;
-	if(Step_size<0) Step_size=0;
+	Step_size=OptStep2(WW1,WW2,YY,W2dir);
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W2
 	for(int t=0; t<Tseq; t++){
-		for(int j=0; j<J; j++){
-			WW2[j][t]=WW2[j][t]*(1.0-Step_size)+W2dir[j][t]*Step_size;
+		for(int j=1; j<J; j++){
+			int kk=(j-1)/(2*L);
+			WW2[j][t]=WW2[j][t]*(1.0-Step_size[kk])+W2dir[j][t]*Step_size[kk];
 		}
+	}
+	// Fit unassigned entrees
+	for(int t=0; t<Tseq; t++){
+		double W0t=WW1[0][t]+YY[0][t]/mu;
+		if(W0t>1) W0t=1.0;
+		if(W0t<0) W0t=0;
+		WW2[0][t]=W0t;
 	}
 	return WW2;
 }
@@ -114,7 +120,7 @@ MAT_D UpdateY(	MAT_D WW1,
 	MAT_D YR(YY);
 	for(int t=0; t<Tseq; t++){
 		for(int j=0; j<J; j++){
-			YR[j][t]+=mu*(WW1[j][t]-WW2[j][t]);
+			YR[j][t]=YR[j][t]*(1.0)+mu*(WW1[j][t]-WW2[j][t]);
 		}
 	}
 	return YR;

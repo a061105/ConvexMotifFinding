@@ -40,11 +40,11 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.02/KG/word_length;
+	double eps=0.08/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
-			adderr[cha][k]=eps*random;
+			//adderr[cha][k]=eps*random;
 			adderr[cha][k]+=2*eps*k;
 		}
 	}
@@ -68,28 +68,30 @@ int main()
 	
 
 	//----------------------initialize W2, all optimal--------------------------
-	/*MAT_D Wopt(J,col1);
+	MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
 			int t=(i-1)*L+j-1;		//pisition in seq
 			int dig=0;
-			if(Seq[t]=='1') dig=1;	//correct assign should be 1 or 0
+			if(InSeq[t]=='1') dig=1;	//correct assign should be 1 or 0
 			Wopt[(2*j-2)+dig+(2*L*index1+1)][t]=1;
 		}
 	}
-	cout<<"Optimal is:"<<endl;
-	ResOut(Wopt);*/
+	double Opt_val=LossfuncW1(C,Wopt);
+	cout<<"Optimal is:"<<Opt_val<<endl;
 	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		// Optimization Phase One
+		//cout<<"Phase One"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W1=OptPhaseOne(C,W1,W2,Y,k_num);
 		}
 		//Optimization Phase Two
+		//cout<<"Phase two"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
 		W2=OptPhaseTwo(C,W1,W2,Y,k_num);
@@ -98,7 +100,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"Loss:"<<LossfuncW1(C,W1)<<";  "<<"Diff:"<<diffW12<<endl;
+		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<W1[1][0]<<" "<<W1[17][0]<<endl;
 		if(diffW12<1e-5) break;
 	}
 	cout<<"End output W1:"<<endl;

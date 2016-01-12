@@ -22,19 +22,23 @@ double OptStep1(MAT_D CC,
 }
 
 
-double OptStep1(MAT_D W1,
+vector<double> OptStep2(MAT_D W1,
 				MAT_D W2,
 				MAT_D YY,
 				MAT_D DIR){
-	double BF2=0,AB=0; // B=S-W1, A=W1-W2+Y/mu, S-descent direction
-	
-	for(int j=0; j<J; j++){
-		for(int t=0; t<Tseq; t++){
-			double Bjt=-DIR[j][t]+W2[j][t];
-			double Ajt=(W1[j][t]-W2[j][t])+YY[j][t]/mu;
-			BF2+=pow(Bjt,2);
-			AB+=Ajt*Bjt;
+	vector<double> step(KG,0);
+	for(int kk=0; kk<KG; kk++){
+	double BF2=0,AB=0; // B=W2-S, A=W1-W2+Y/mu, S-descent direction
+		for(int j=kk*2*L+1; j<(kk+1)*2*L+1; j++){
+			for(int t=0; t<Tseq; t++){
+				double Bjt=-DIR[j][t]+W2[j][t];
+				double Ajt=(W1[j][t]-W2[j][t])+YY[j][t]/mu;
+				BF2+=pow(Bjt,2);
+				AB+=Ajt*Bjt;
+			}
 		}
+		if(BF2<1e-6) BF2=1e-6;
+		step[kk]=-AB/BF2;
 	}
-	return -AB/BF2;
+	return step;
 }
