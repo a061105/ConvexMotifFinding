@@ -16,7 +16,7 @@
 using namespace std;
 typedef vector<vector<double> > MAT_D; 
 
-	const string word="aaaaaaaaacccccdddp";	
+	const string word="aaaaaaaaalllllfffp";	
 	const int word_length=word.size();
 	const int L=4;
 	const int KG=4,Kopt=4;

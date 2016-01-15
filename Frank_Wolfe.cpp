@@ -133,21 +133,21 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 		//cout<<"P"<<pa_num+1<<": ";
 		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
 		for(int dig=0; dig<L; dig++){
-			int choose_zero=0, choose_one=0;
+			double choose_zero=0, choose_one=0;
 			int zero_slot=pa_L+2*dig;
 			int one_slot=zero_slot+1;
 			vector<double> zero_vec,one_vec;
 			for(int t=0; t<Tseq; t++){
 				// Calculating score of choosing zero & formulating dir
 				if(Gradw2[zero_slot][t]<0){
-					choose_zero++;
+					choose_zero+=-Gradw2[zero_slot][t];
 					zero_vec.push_back(1.0);
 				}else{
 					zero_vec.push_back(0);
 				}
 				// Calculating score of choosing one & formulating dir
 				if(Gradw2[one_slot][t]<0){
-					choose_one++;
+					choose_one+=-Gradw2[one_slot][t];
 					one_vec.push_back(1.0);
 				}else{
 					one_vec.push_back(0);
@@ -178,21 +178,21 @@ MAT_D GroupConsDir(MAT_D Gradw2,
 		cout<<"P"<<pa_num+1<<": ";
 		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
 		for(int dig=0; dig<L; dig++){
-			int choose_zero=0, choose_one=0;
+			double choose_zero=0, choose_one=0;
 			int zero_slot=pa_L+2*dig;
 			int one_slot=zero_slot+1;
 			vector<double> zero_vec,one_vec;
 			for(int t=0; t<Tseq; t++){
 				// Calculating score of choosing zero & formulating dir
 				if(Gradw2[zero_slot][t]<0){
-					choose_zero++;
+					choose_zero+=-Gradw2[zero_slot][t];
 					zero_vec.push_back(1.0);
 				}else{
 					zero_vec.push_back(0);
 				}
 				// Calculating score of choosing one & formulating dir
 				if(Gradw2[one_slot][t]<0){
-					choose_one++;
+					choose_one+=-Gradw2[one_slot][t];
 					one_vec.push_back(1.0);
 				}else{
 					one_vec.push_back(0);
