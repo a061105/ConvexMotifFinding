@@ -130,7 +130,7 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 	MAT_D R2(J,col0);
 	// Finding a pattern for each pattern slot pa_num=0,1,2 ... Kopt-1
 	for(int pa_num=0; pa_num<KG; pa_num++){
-		//cout<<"P"<<pa_num+1<<": ";
+		cout<<"P"<<pa_num+1<<": ";
 		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
 		for(int dig=0; dig<L; dig++){
 			int choose_zero=0, choose_one=0;
@@ -155,13 +155,13 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 			}
 			if(choose_zero>=choose_one){// then choose zero
 				R2[zero_slot].assign(zero_vec.begin(),zero_vec.end());
-				//cout<<"0";
+				cout<<"0";
 			}else{						// choose one
 				R2[one_slot].assign(one_vec.begin(),one_vec.end());
-				//cout<<"1";
+				cout<<"1";
 			}
 		}// end for this digit
-		//cout<<endl;
+		cout<<endl;
 	}//end for this pattern
 	
 	return R2;
