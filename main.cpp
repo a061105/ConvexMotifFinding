@@ -40,7 +40,7 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.15/KG/word_length;
+	double eps=0.1/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
@@ -68,7 +68,7 @@ int main()
 	
 
 	//----------------------initialize W2, all optimal--------------------------
-	MAT_D Wopt(J,col1);
+	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
 		int index1=word[i-1]-'a';      // ascii of ith char-97
 		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
@@ -79,7 +79,7 @@ int main()
 		}
 	}
 	double Opt_val=LossfuncW1(C,Wopt);
-	cout<<"Optimal is:"<<Opt_val<<endl;
+	cout<<"Optimal is:"<<Opt_val<<endl;*/
 	//----------------------------------------------------------------------------
 	MAT_D Y(J,col1);  // initialize Y with all zeros
 	// start rowlling
@@ -94,13 +94,14 @@ int main()
 		//cout<<"Phase two"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			int k_num=Iter+1;
-		W2=OptPhaseTwo(C,W1,W2,Y,k_num);
+		W2=OptPhaseTwo(C,W1,W2,Y,Inner_iter);
 		}
 		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<W1[1][0]<<" "<<W1[17][0]<<endl;
+		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<W1[1][0]<<" "<<W1[9][0]<<endl;
+		//ResOut(W2);
 		if(diffW12<1e-5) break;
 	}
 	cout<<"End output W1:"<<endl;

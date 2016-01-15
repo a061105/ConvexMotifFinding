@@ -16,6 +16,8 @@ extern vector<double> OptStep2( MAT_D W1,
 						MAT_D YY,
 						MAT_D DIR);
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
+MAT_D GroupConsDir(MAT_D Gradw2,
+					bool ifprint);
 extern void Report_dir(vector<int> AT);
 extern MAT_D GroupConsDir(MAT_D Gradw2);
 
@@ -63,7 +65,11 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	MAT_D W2dir;
 	vector<double> Step_size(KG,2.0/(num_k+2));
 	Gradw2=Gradf(WW1,WW2,YY);
-	W2dir=GroupConsDir(Gradw2);
+	if(num_k!=1){
+		W2dir=GroupConsDir(Gradw2);
+	}else{
+		W2dir=GroupConsDir(Gradw2);
+	}
 	Step_size=OptStep2(WW1,WW2,YY,W2dir);
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);

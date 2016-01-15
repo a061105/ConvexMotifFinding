@@ -16,10 +16,10 @@
 using namespace std;
 typedef vector<vector<double> > MAT_D; 
 
-	const string word="aaaaaaaaabbbbbcccd";	
+	const string word="aaaaaaaaacccccdddp";	
 	const int word_length=word.size();
-	const int L=8;
-	const int KG=8,Kopt=4;
+	const int L=4;
+	const int KG=4,Kopt=4;
 	const int J=2*KG*L+1,Tseq=word_length*L;
 	const int update_num=4000, Inner_num=30;
 	const double mu=0.3,cost_un=1.0,cost_mis=1.5;
