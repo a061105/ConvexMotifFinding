@@ -40,12 +40,12 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.0/KG/word_length;
+	double eps=0.01/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
 			//adderr[cha][k]=eps*random;
-			adderr[cha][k]+=2*eps*k;
+			adderr[cha][k]+=2*eps*cha;
 		}
 	}
 	
@@ -58,9 +58,9 @@ int main()
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+adderr[0][kk];
+					C[(1+2*L*kk)+j][t]=cost_mis+adderr[cha][kk];
 				}else{
-					C[(1+2*L*kk)+j][t]=adderr[0][kk];
+					C[(1+2*L*kk)+j][t]=adderr[cha][kk];
 				}
 			}
 		}
