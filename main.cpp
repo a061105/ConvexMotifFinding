@@ -26,7 +26,7 @@ extern string Word2Bin(const string word);
 
 int main()
 {
-	string InSeq=Word2Bin(word);
+	string InSeq="011001111010111010011001";
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -40,7 +40,7 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.01/KG/word_length;
+	double eps=0.00/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
