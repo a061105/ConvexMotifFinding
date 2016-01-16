@@ -17,7 +17,7 @@ using namespace std;
 typedef vector<vector<double> > MAT_D; 
 
 	const string word="what starts here changes the world";	
-	const int word_length=6;
+	const int word_length=4;
 	const int L=4;
 	const int KG=64,Kopt=3;  // from 00000(means space) 00001(a) ... 11010(z)
 	const int J=2*KG*L+1,Tseq=word_length*L;
