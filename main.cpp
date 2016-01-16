@@ -40,7 +40,7 @@ int main()
 	//adding a little random bias on patterns
 	vector<double> Errcol(KG,0.0);
 	MAT_D adderr(word_length,Errcol);
-	double eps=0.1/KG/word_length;
+	double eps=0.0/KG/word_length;
 	srand((unsigned)time(0));
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
@@ -65,7 +65,18 @@ int main()
 			}
 		}
 	}
-	
+	// add prefer for each pattern
+	for(int t=0; t<Tseq; t++){
+		for(int kk=0; kk<KG; kk++){
+			int patnum=kk+1;
+			for(int j=L; j>0; j--){
+				int zero_slot=2*L*kk+2*j-1;
+				bool ifpref1=patnum%2;
+				patnum/=2;
+				C[zero_slot+!ifpref1][t]+=prefer;
+			}
+		}
+	}
 
 	//----------------------initialize W2, all optimal--------------------------
 	/*MAT_D Wopt(J,col1);
@@ -100,7 +111,7 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<W1[1][0]<<" "<<W1[9][0]<<endl;
+		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<endl;
 		//ResOut(W2);
 		if(diffW12<1e-5) break;
 	}
