@@ -62,6 +62,7 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	
 	MAT_D Gradw2;
 	MAT_D W2dir;
+	double ratio=(double)Kopt/(double)KG;
 	vector<int> pattern_ind(Kopt,0);
 	vector<double> Step_size(KG,2.0/(num_k+2));
 	Gradw2=Gradf(WW1,WW2,YY);
@@ -71,10 +72,9 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	//Report_dir(Aton);
 	// update W2
 	for(int t=0; t<Tseq; t++){
-		for(int pat=0; pat<Kopt; pat++){
-			int kk=pattern_ind[pat];
+		for(int kk=0; kk<KG; kk++){
 			for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
-			WW2[j][t]=WW2[j][t]*(1.0-Step_size[kk])+W2dir[j][t]*Step_size[kk];
+			WW2[j][t]=WW2[j][t]*(1.0-Step_size[kk])+W2dir[j][t]*Step_size[kk]*ratio;
 			}
 		}
 	}

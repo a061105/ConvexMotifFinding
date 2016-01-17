@@ -26,7 +26,7 @@ extern string Word2Bin(const string word);
 
 int main()
 {
-	string InSeq="011001111010111010011001";
+	string InSeq=Word2Bin(word);
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
