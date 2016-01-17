@@ -16,3 +16,19 @@ string Word2Bin(const string word){
 	}
 	return res;
 }
+
+vector<int> Topk( vector<double> Array, int k){
+	vector<int> Top_indi(k,-1);
+
+	for(int indice=0; indice<k; indice++){
+		double M_max=-1;
+		for(int i=0; i<Array.size(); i++){   // RT=argmin(M(T,S))
+			if(M_max<Array[i]){
+				Top_indi[indice]=i;
+				M_max=Array[i];
+			}
+		}
+		Array[Top_indi[indice]]=-MAX_NUMBER;
+	}
+	return Top_indi;
+}

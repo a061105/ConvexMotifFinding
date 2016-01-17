@@ -1,5 +1,6 @@
 #include"incl_head.h"
 extern void Report_dir(vector<int> AT);
+vector<int> Topk( vector<double> Array, int k);
 
 vector<int> Frank_Wolfe(	MAT_D Gradf)
 {
@@ -123,13 +124,15 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 }
 
 
-MAT_D GroupConsDir(MAT_D Gradw2){
+MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind){
 
 	int Lopt=2*Kopt*L+1;
 	vector<double> col0(Tseq,0);
+	vector<double> pattern_score;
 	MAT_D R2(J,col0);
 	// Finding a pattern for each pattern slot pa_num=0,1,2 ... Kopt-1
 	for(int pa_num=0; pa_num<KG; pa_num++){
+		double thispattern=0;
 		//cout<<"P"<<pa_num+1<<": ";
 		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
 		for(int dig=0; dig<L; dig++){
@@ -155,59 +158,20 @@ MAT_D GroupConsDir(MAT_D Gradw2){
 			}
 			if(choose_zero>=choose_one){// then choose zero
 				R2[zero_slot].assign(zero_vec.begin(),zero_vec.end());
+				thispattern+=choose_zero;
 				//cout<<"0";
 			}else{						// choose one
 				R2[one_slot].assign(one_vec.begin(),one_vec.end());
+				thispattern+=choose_one;
 				//cout<<"1";
 			}
 		}// end for this digit
+		pattern_score.push_back(thispattern);
 		//cout<<endl;
 	}//end for this pattern
 	
+	pattern_ind=Topk(pattern_score,Kopt);
+
 	return R2;
 }
 
-MAT_D GroupConsDir(MAT_D Gradw2,
-					bool ifprint){
-
-	int Lopt=2*Kopt*L+1;
-	vector<double> col0(Tseq,0);
-	MAT_D R2(J,col0);
-	// Finding a pattern for each pattern slot pa_num=0,1,2 ... Kopt-1
-	for(int pa_num=0; pa_num<KG; pa_num++){
-		cout<<"P"<<pa_num+1<<": ";
-		int pa_L=pa_num*2*L+1, pa_R=pa_L+2*L;
-		for(int dig=0; dig<L; dig++){
-			double choose_zero=0, choose_one=0;
-			int zero_slot=pa_L+2*dig;
-			int one_slot=zero_slot+1;
-			vector<double> zero_vec,one_vec;
-			for(int t=0; t<Tseq; t++){
-				// Calculating score of choosing zero & formulating dir
-				if(Gradw2[zero_slot][t]<0){
-					choose_zero+=-Gradw2[zero_slot][t];
-					zero_vec.push_back(1.0);
-				}else{
-					zero_vec.push_back(0);
-				}
-				// Calculating score of choosing one & formulating dir
-				if(Gradw2[one_slot][t]<0){
-					choose_one+=-Gradw2[one_slot][t];
-					one_vec.push_back(1.0);
-				}else{
-					one_vec.push_back(0);
-				}
-			}
-			if(choose_zero>=choose_one){// then choose zero
-				R2[zero_slot].assign(zero_vec.begin(),zero_vec.end());
-				cout<<"0";
-			}else{						// choose one
-				R2[one_slot].assign(one_vec.begin(),one_vec.end());
-				cout<<"1";
-			}
-		}// end for this digit
-		cout<<endl;
-	}//end for this pattern
-	
-	return R2;
-}

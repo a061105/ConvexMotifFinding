@@ -14,12 +14,11 @@ extern double OptStep1( MAT_D CC,
 extern vector<double> OptStep2( MAT_D W1,
 						MAT_D W2,
 						MAT_D YY,
-						MAT_D DIR);
+						MAT_D DIR,
+						vector<int> pattern_ind);
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
-MAT_D GroupConsDir(MAT_D Gradw2,
-					bool ifprint);
 extern void Report_dir(vector<int> AT);
-extern MAT_D GroupConsDir(MAT_D Gradw2);
+extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind);
 
 //----------------------Update W1------------------------------
 MAT_D OptPhaseOne(	MAT_D CC,
@@ -63,21 +62,20 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 	
 	MAT_D Gradw2;
 	MAT_D W2dir;
+	vector<int> pattern_ind(Kopt,0);
 	vector<double> Step_size(KG,2.0/(num_k+2));
 	Gradw2=Gradf(WW1,WW2,YY);
-	if(num_k!=1){
-		W2dir=GroupConsDir(Gradw2);
-	}else{
-		W2dir=GroupConsDir(Gradw2);
-	}
-	Step_size=OptStep2(WW1,WW2,YY,W2dir);
+	W2dir=GroupConsDir(Gradw2, pattern_ind);
+	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W2
 	for(int t=0; t<Tseq; t++){
-		for(int j=1; j<J; j++){
-			int kk=(j-1)/(2*L);
+		for(int pat=0; pat<Kopt; pat++){
+			int kk=pattern_ind[pat];
+			for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
 			WW2[j][t]=WW2[j][t]*(1.0-Step_size[kk])+W2dir[j][t]*Step_size[kk];
+			}
 		}
 	}
 	// Fit unassigned entrees
