@@ -9,16 +9,16 @@ extern double LossfuncW1(	MAT_D CC,
 extern		MAT_D UpdateY(	MAT_D WW1,
 							MAT_D WW2,
 							MAT_D YY);
-extern	MAT_D OptPhaseOne(  MAT_D CC,
-							MAT_D WW1,
-							MAT_D WW2,
-							MAT_D YY,
-							int num_k);
-extern MAT_D OptPhaseTwo(	MAT_D CC,
-							MAT_D WW1,
-							MAT_D WW2,
-							MAT_D YY,
-							int num_k);
+extern void OptPhaseOne(    MAT_D& CC,
+							MAT_D& WW1,
+							MAT_D& WW2,
+							MAT_D& YY,
+							double& step_size);
+extern void OptPhaseTwo(	MAT_D& CC,
+							MAT_D& WW1,
+							MAT_D& WW2,
+							MAT_D& YY,
+							double& step_size);
 extern double diff(			MAT_D WW1,
 							MAT_D WW2);
 extern double DisToOne(		MAT_D WW1);
@@ -37,30 +37,15 @@ int main()
 	ResOut(W1);
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
-	//adding a little random bias on patterns
-	vector<double> Errcol(KG,0.0);
-	MAT_D adderr(word_length,Errcol);
-	double eps=0.00/KG/word_length;
-	srand((unsigned)time(0));
-	for(int k=0; k<KG; k++){
-		for(int cha=0; cha<word_length; cha++){
-			//adderr[cha][k]=eps*random;
-			adderr[cha][k]+=2*eps*cha;
-		}
-	}
 	
 	
 	// continue construct C 
 	for(int t=0; t<Tseq; t++){
-		int dig=0;
-		int cha=t/L;
-		if(InSeq[t]=='1') dig=1;
+		bool dig=(InSeq[t]=='1');
 		for(int kk=0; kk<KG; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[(1+2*L*kk)+j][t]=cost_mis+adderr[cha][kk];
-				}else{
-					C[(1+2*L*kk)+j][t]=adderr[cha][kk];
+					C[(1+2*L*kk)+j][t]=cost_mis;
 				}
 			}
 		}
@@ -74,6 +59,8 @@ int main()
 				bool ifpref1=patnum%2;
 				patnum/=2;
 				C[zero_slot+!ifpref1][t]+=prefer;
+				C[zero_slot][t]+=global_prefer*kk;
+				C[zero_slot+1][t]+=global_prefer*kk;
 			}
 		}
 	}
@@ -81,9 +68,10 @@ int main()
 	//----------------------initialize W2, all optimal--------------------------
 	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
-		int index1=word[i-1]-'a';      // ascii of ith char-97
-		for(int j=1; j<=L; j++){	// jth digit of ith char's pattern
-			int t=(i-1)*L+j-1;		//pisition in seq
+		int index1=word[i-1]-'a'+1;      // ascii of ith char-97
+		index1=index1*pow(2,(double)(L-Lmin));
+		for(int j=1; j<=Lmin; j++){	// jth digit of ith char's pattern
+			int t=(i-1)*Lmin+j-1;		//pisition in seq
 			int dig=0;
 			if(InSeq[t]=='1') dig=1;	//correct assign should be 1 or 0
 			Wopt[(2*j-2)+dig+(2*L*index1+1)][t]=1;
@@ -96,30 +84,29 @@ int main()
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		// Optimization Phase One
-		//cout<<"Phase One"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
-			int k_num=Iter+1;
-		W1=OptPhaseOne(C,W1,W2,Y,k_num);
+			double step_length=2.0/(Inner_iter+2);
+			OptPhaseOne(C,W1,W2,Y,step_length);
+			if(step_length<inner_eps) break;
 		}
 		//Optimization Phase Two
-		//cout<<"Phase two"<<endl;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
-			int k_num=Iter+1;
-		W2=OptPhaseTwo(C,W1,W2,Y,Inner_iter);
+			double step_length=2.0/(Inner_iter+2);
+			OptPhaseTwo(C,W1,W2,Y,step_length);
+			if(step_length<inner_eps) break;
 		}
 		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
-		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
 		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<endl;
 		//ResOut(W2);
-		if(diffW12<1e-5) break;
+		if(diffW12<outer_eps) break;
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
-	cout<<"Max entree distance to one:"<<DisToOne(W1)<<endl;
+	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;
 }

@@ -21,17 +21,15 @@ extern void Report_dir(vector<int> AT);
 extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind);
 
 //----------------------Update W1------------------------------
-MAT_D OptPhaseOne(	MAT_D CC,
-					MAT_D WW1,
-					MAT_D WW2,
-					MAT_D YY,
-					int num_k)
+void OptPhaseOne(	MAT_D& CC,
+					MAT_D& WW1,
+					MAT_D& WW2,
+					MAT_D& YY,
+					double& Step_size)
 {
 	
 	MAT_D Gradw1;
 	vector<int> Aton;
-	double Step_size=2.0/(num_k+2);
-	
 	Gradw1=Gradf(CC,WW1,WW2,YY);
 	Aton=Frank_Wolfe(Gradw1);
 	Step_size=OptStep1(CC,WW1,WW2,YY,Aton);
@@ -40,8 +38,8 @@ MAT_D OptPhaseOne(	MAT_D CC,
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W1
-	for(int t=0; t<Tseq; t++){
-		for(int j=0; j<J; j++){
+	for(int j=0; j<J; j++){
+		for(int t=0; t<Tseq; t++){
 			WW1[j][t]*=(1.0-Step_size);
 		}
 	}
@@ -49,32 +47,44 @@ MAT_D OptPhaseOne(	MAT_D CC,
 		int j=Aton[t];
 		WW1[j][t]+=Step_size;
 	}
-	return WW1;
+	//cout<<Step_size<<endl;
+	return;
 }
 
 //----------------------Update W2------------------------------
-MAT_D OptPhaseTwo(	MAT_D CC,
-					MAT_D WW1,
-					MAT_D WW2,
-					MAT_D YY,
-					int num_k)
+void OptPhaseTwo(	MAT_D& CC,
+					MAT_D& WW1,
+					MAT_D& WW2,
+					MAT_D& YY,
+					double& MaxStep_size)
 {
 	
 	MAT_D Gradw2;
 	MAT_D W2dir;
-	double ratio=(double)Kopt/(double)KG;
 	vector<int> pattern_ind(Kopt,0);
-	vector<double> Step_size(KG,2.0/(num_k+2));
+	vector<double> Step_size(KG,MaxStep_size);
 	Gradw2=Gradf(WW1,WW2,YY);
 	W2dir=GroupConsDir(Gradw2, pattern_ind);
 	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
-	//cout<<"Step_size: "<<Step_size<<endl;
+	//find max step_size
+	MaxStep_size=*max_element(Step_size.begin(),Step_size.end());
 	//Report_dir(Aton);
 	// update W2
-	for(int t=0; t<Tseq; t++){
-		for(int kk=0; kk<KG; kk++){
-			for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
-			WW2[j][t]=WW2[j][t]*(1.0-Step_size[kk])+W2dir[j][t]*Step_size[kk]*ratio;
+	
+	for(int kk=0; kk<KG; kk++){
+		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
+			for(int t=0; t<Tseq; t++){
+				WW2[j][t]*=(1.0-Step_size[kk]);
+			}
+		}
+	}
+
+	
+	for(int pat=0; pat<Kopt; pat++){
+		int kk=pattern_ind[pat];
+		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
+			for(int t=0; t<Tseq; t++){
+				WW2[j][t]+=W2dir[j][t]*Step_size[kk];
 			}
 		}
 	}
@@ -85,7 +95,8 @@ MAT_D OptPhaseTwo(	MAT_D CC,
 		if(W0t<0) W0t=0;
 		WW2[0][t]=W0t;
 	}
-	return WW2;
+	//cout<<MaxStep_size<<endl;
+	return;
 }
 
 //Compute Original Grad for W1
