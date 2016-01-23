@@ -26,7 +26,7 @@ extern string Word2Bin(const string word);
 
 int main()
 {
-	string InSeq=Word2Bin(word);
+	
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -64,7 +64,14 @@ int main()
 			}
 		}
 	}
-
+	// add penalty on incomplete patterns
+	for(int kk=0; kk<KG; kk++){
+		for(int j=0; j<Lmin-1; j++){
+			int zero_slot=2*L*kk+2*j+1;
+			C[zero_slot][Tseq-1]+=penalty_imcomplete;
+			C[zero_slot+1][Tseq-1]+=penalty_imcomplete;
+		}
+	}
 	//----------------------initialize W2, all optimal--------------------------
 	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char

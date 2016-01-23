@@ -42,7 +42,7 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 		}
 		// for assigned case
 		for(int ch=0; ch<KG; ch++){ // for all chars a b c ...
-			for(int l=0; l<Lmin-1; l++){ 
+			for(int l=0; l<L-1; l++){ 
 					int s1=2*ch*L+1+2*l;
 					// for all digit in a char a1_0 a2_0 ... aLmin-1_0
 					for(int s2=s1+2; s2<=s1+3; s2++){				// s2 can only have two choice->  the next one to be 0 or 1
@@ -108,11 +108,20 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 	}
 	
 	// Generating R: descent direction
-	double M_max=MAX_NUMBER;
-	for(int i=0; i<J; i++){   // RT=argmin(M(T,S))
-		if(M_max>M[i][Tseq-1]){
-			R[Tseq-1]=i;
-			M_max=M[i][Tseq-1];
+	double M_max=M[0][Tseq-1];
+	R[Tseq-1]=0;
+	for(int kk=0; kk<KG; kk++){
+		for(int j=Lmin-1; j<L; j++){   // RT=argmin(M(T,S))
+			int i0=2*L*kk+2*j+1;
+			if(M_max>M[i0][Tseq-1]){
+				R[Tseq-1]=i0;
+				M_max=M[i0][Tseq-1];
+			}
+			int i1=2*L*kk+2*j+2;
+			if(M_max>M[i1][Tseq-1]){
+				R[Tseq-1]=i1;
+				M_max=M[i1][Tseq-1];
+			}
 		}
 	}
 	for(int t=Tseq-1; t>=1; t--){
