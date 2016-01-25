@@ -26,7 +26,7 @@ extern string Word2Bin(const string word);
 
 int main()
 {
-	
+	string InSeq=Word2Bin(word);
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
 	MAT_D C(J,col1);
@@ -53,23 +53,16 @@ int main()
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
 		for(int kk=0; kk<KG; kk++){
-			int patnum=kk+1;
+			int patnum=kk;
 			for(int j=L; j>0; j--){
 				int zero_slot=2*L*kk+2*j-1;
 				bool ifpref1=patnum%2;
 				patnum/=2;
+				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
-				C[zero_slot][t]+=global_prefer*kk;
-				C[zero_slot+1][t]+=global_prefer*kk;
+				C[zero_slot][t]+=global_prefer*(kk+rapre);
+				C[zero_slot+1][t]+=global_prefer*(kk+rapre);
 			}
-		}
-	}
-	// add penalty on incomplete patterns
-	for(int kk=0; kk<KG; kk++){
-		for(int j=0; j<Lmin-1; j++){
-			int zero_slot=2*L*kk+2*j+1;
-			C[zero_slot][Tseq-1]+=penalty_imcomplete;
-			C[zero_slot+1][Tseq-1]+=penalty_imcomplete;
 		}
 	}
 	//----------------------initialize W2, all optimal--------------------------
