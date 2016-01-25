@@ -2,10 +2,11 @@
 
 string Word2Bin(const string word){
 	string res;
+	int L_char=5;
 	for(int p=0; p<word_length; p++){
 		int wp=word[p]-'a'+1;
 		if(word[p]==' ') wp=0;
-		for(int l=L-1; l>=0; l--){
+		for(int l=L_char-1; l>=0; l--){
 			if(wp/(int)pow((double)2,l)){
 				res.push_back('1');
 				wp-=(int)pow((double)2,l);
