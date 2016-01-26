@@ -53,18 +53,18 @@ int main()
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
 		for(int kk=0; kk<KG; kk++){
-			int patnum=kk+1;
+			int patnum=kk;
 			for(int j=L; j>0; j--){
 				int zero_slot=2*L*kk+2*j-1;
 				bool ifpref1=patnum%2;
 				patnum/=2;
+				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
-				C[zero_slot][t]+=global_prefer*kk;
-				C[zero_slot+1][t]+=global_prefer*kk;
+				C[zero_slot][t]+=global_prefer*(kk+rapre);
+				C[zero_slot+1][t]+=global_prefer*(kk+rapre);
 			}
 		}
 	}
-
 	//----------------------initialize W2, all optimal--------------------------
 	/*MAT_D Wopt(J,col1);
 	for(int i=1; i<=word_length; i++){ // consider ith char
