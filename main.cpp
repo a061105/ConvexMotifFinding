@@ -64,6 +64,8 @@ int main()
 					C[zero_slot][t]+=2*short_prefer;
 					C[zero_slot+1][t]+=2*short_prefer;
 				}
+				C[zero_slot][t]+=short_prefer*random;
+				C[zero_slot+1][t]+=short_prefer*random;
 			}
 		}
 	}

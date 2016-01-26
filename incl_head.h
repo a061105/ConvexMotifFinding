@@ -24,5 +24,5 @@ typedef vector<vector<double> > MAT_D;
 	const int J=2*KG*L+1,Tseq=word_length*Lmin+space_num;
 	const int update_num=4000, Inner_num=30;
 	const double mu=0.3,cost_un=1.0,cost_mis=1.5;
-	const double prefer=0.1,short_prefer=5*prefer/KG;
+	const double prefer=0.1,short_prefer=prefer/KG;
 	const double inner_eps=1e-5, outer_eps=1e-5;
