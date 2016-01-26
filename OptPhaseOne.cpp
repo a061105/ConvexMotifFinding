@@ -15,11 +15,10 @@ extern double OptStep2( MAT_D W1,
 						MAT_D W2,
 						MAT_D YY,
 						MAT_D DIR,
-						vector<int> pattern_ind,
-						vector<int>& pattern_length);
+						vector<int> pattern_ind);
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
 extern void Report_dir(vector<int> AT);
-extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind,vector<int>& pattern_length);
+extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind);
 
 //----------------------Update W1------------------------------
 void OptPhaseOne(	MAT_D& CC,
@@ -39,7 +38,7 @@ void OptPhaseOne(	MAT_D& CC,
 	//cout<<"Step_size: "<<Step_size<<endl;
 	//Report_dir(Aton);
 	// update W1
-	for(int j=0; j<J; j++){
+	for(int j=0; j<J1+J2; j++){
 		for(int t=0; t<Tseq; t++){
 			WW1[j][t]*=(1.0-Step_size);
 		}
@@ -63,11 +62,10 @@ void OptPhaseTwo(	MAT_D& CC,
 	MAT_D Gradw2;
 	MAT_D W2dir;
 	vector<int> pattern_ind(Kopt,0);
-	vector<int> pattern_length(KG,L);
 	double Step_size=MaxStep_size;
 	Gradw2=Gradf(WW1,WW2,YY);
-	W2dir=GroupConsDir(Gradw2, pattern_ind,pattern_length);
-	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind,pattern_length);
+	W2dir=GroupConsDir(Gradw2, pattern_ind);
+	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
 	//find max step_size
 	MaxStep_size=Step_size;
 	cout<<Step_size<<endl;
@@ -75,18 +73,20 @@ void OptPhaseTwo(	MAT_D& CC,
 	//Report_dir(Aton);
 	// update W2
 	
-	for(int kk=0; kk<KG; kk++){
-		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
+	for(int j=0; j<J1+J2; j++){
 			for(int t=0; t<Tseq; t++){
 				WW2[j][t]*=(1.0-Step_size);
 			}
-		}
 	}
 
 	
 	for(int pat=0; pat<Kopt; pat++){
 		int kk=pattern_ind[pat];
-		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
+		int the_length=L;
+		if(kk>=KG1) the_length=Lmin;
+		for(int inn=0; inn<2*the_length; inn++){
+			int j=2*L*kk+inn+1;
+			if(kk>=KG1) j=2*Lmin*(kk-KG1)+J1+inn;
 			for(int t=0; t<Tseq; t++){
 				WW2[j][t]+=W2dir[j][t]*Step_size;
 			}
@@ -110,8 +110,8 @@ MAT_D Gradf(	MAT_D CC,
 				MAT_D YY)
 {
 	MAT_D GG=CC;
-	for(int i=0; i<Tseq; i++){
-		for(int j=0; j<J; j++){
+	for(int j=0; j<J1+J2; j++){
+		for(int i=0; i<Tseq; i++){
 			GG[j][i]+=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
 		}
 	}
@@ -123,9 +123,9 @@ MAT_D Gradf(	MAT_D WW1,
 				MAT_D YY)
 {
 	vector<double> col_dou(Tseq,0.0);
-	MAT_D GG(J,col_dou);
-	for(int i=0; i<Tseq; i++){
-		for(int j=0; j<J; j++){
+	MAT_D GG(J1+J2,col_dou);
+	for(int j=0; j<J1+J2; j++){
+		for(int i=0; i<Tseq; i++){
 			GG[j][i]-=mu*(WW1[j][i]-WW2[j][i]+YY[j][i]/mu);
 		}
 	}
@@ -137,9 +137,9 @@ MAT_D UpdateY(	MAT_D WW1,
 				MAT_D WW2,
 				MAT_D YY){
 	MAT_D YR(YY);
-	for(int t=0; t<Tseq; t++){
-		for(int j=0; j<J; j++){
-			YR[j][t]=YR[j][t]*(1.0)+mu*(WW1[j][t]-WW2[j][t]);
+	for(int j=0; j<J1+J2; j++){
+		for(int t=0; t<Tseq; t++){
+			YR[j][t]=YR[j][t]+mu*(WW1[j][t]-WW2[j][t]);
 		}
 	}
 	return YR;
