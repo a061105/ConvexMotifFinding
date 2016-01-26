@@ -49,6 +49,7 @@ int main()
 			}
 		}
 	}
+	ResOut(W1,InSeq);
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
 		for(int kk=0; kk<KG; kk++){
@@ -62,9 +63,10 @@ int main()
 				if(kk%2==1){
 					C[zero_slot][t]+=2*short_prefer;
 					C[zero_slot+1][t]+=2*short_prefer;
+				}else{
+					C[zero_slot][t]+=short_prefer*(0);
+					C[zero_slot+1][t]+=short_prefer*(0);
 				}
-				C[zero_slot][t]+=short_prefer*random;
-				C[zero_slot+1][t]+=short_prefer*random;
 			}
 		}
 	}
@@ -107,8 +109,8 @@ int main()
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1,InSeq);
-	//cout<<"End output W2:"<<endl;
-	//ResOut(W2,InSeq);
+	cout<<"End output W2:"<<endl;
+	ResOut(W2,InSeq);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;

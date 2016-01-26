@@ -1,6 +1,6 @@
 #include"incl_head.h"
 extern void Report_dir(vector<int> AT);
-vector<int> Topk( vector<double> Array, int k);
+vector<int> Topk( vector<double> Array,vector<int> length, int k);
 
 vector<int> Frank_Wolfe(	MAT_D Gradf)
 {
@@ -132,7 +132,7 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 }
 
 
-MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind){
+MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind,vector<int>& pattern_length){
 
 	int Lopt=2*Kopt*L+1;
 	vector<double> col0(Tseq,0);
@@ -185,12 +185,13 @@ MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind){
 			int one_slot=zero_slot+1;
 			R2[one_slot]=col0;
 			R2[zero_slot]=col0;
+			pattern_length[pa_num]--;
 			//cout<<'-';
 		}
 	//cout<<endl;
 	}//end for this pattern
 	
-	pattern_ind=Topk(pattern_score,Kopt);
+	pattern_ind=Topk(pattern_score,pattern_length,Kopt);
 
 	return R2;
 }
