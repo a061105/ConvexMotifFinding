@@ -26,19 +26,22 @@ double OptStep2(MAT_D W1,
 				MAT_D W2,
 				MAT_D YY,
 				MAT_D DIR,
-				vector<int> pattern_ind ){
+				vector<int> pattern_ind,
+				vector<int>& pattern_length){
 	double step=0;
 	double BF2=0,AB=0; // B=W2-S, A=W1-W2+Y/mu, S-descent direction
-		for(int j=0; j<J; j++){
-			int kk=(j-1)/(2*L);
+		for(int kk=0; kk<KG; kk++){
+			for(int inn=0; inn<2*pattern_length[kk]; inn++){
+				int j=2*L*kk+inn+1;
 			vector<int>::iterator ind=pattern_ind.begin();
 			ind=find(pattern_ind.begin(),pattern_ind.end(),kk);
-			for(int t=0; t<Tseq; t++){
-				double Bjt=W2[j][t];
-				if(ind!=pattern_ind.end()) Bjt=-DIR[j][t]+W2[j][t];
-				double Ajt=(W1[j][t]-W2[j][t])+YY[j][t]/mu;
-				BF2+=pow(Bjt,2);
-				AB+=Ajt*Bjt;
+				for(int t=0; t<Tseq; t++){
+					double Bjt=W2[j][t];
+					if(ind!=pattern_ind.end()) Bjt=-DIR[j][t]+W2[j][t];
+					double Ajt=(W1[j][t]-W2[j][t])+YY[j][t]/mu;
+					BF2+=pow(Bjt,2);
+					AB+=Ajt*Bjt;
+				}
 			}
 		}
 		if(BF2<1e-8) BF2=1e-8;

@@ -33,11 +33,7 @@ void ResOut( MAT_D W1,
 			int AA=1+charnum;
 			int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
-<<<<<<< HEAD
-			myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<Inner_seq<<"\n";
-=======
 				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}\n";
->>>>>>> 6f6cab6c22404bad1f817ae9dc8c9e2ea8e02791
 		}
 	}
 	cout<<endl;

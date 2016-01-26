@@ -1,0 +1,594 @@
+Initial is:
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+Un 
+
+Phase One
+Loss func value:18.0444
+Loss func value:11.042
+Loss func value:8.76269
+Loss func value:8.00244
+Loss func value:7.75116
+Loss func value:7.66691
+Loss func value:7.63902
+Loss func value:7.62966
+Loss func value:7.62656
+Loss func value:7.62552
+Loss func value:7.62517
+Loss func value:7.62506
+Loss func value:7.62502
+Loss func value:7.62501
+Loss func value:7.625
+Phase Two
+Loss func value:6.9
+Loss func value:6.26845
+Loss func value:5.71829
+Loss func value:5.23905
+Loss func value:4.82157
+Loss func value:4.4579
+Loss func value:4.1411
+Loss func value:3.86514
+Loss func value:3.62474
+Loss func value:3.41533
+Loss func value:3.23291
+Loss func value:3.074
+Loss func value:2.93558
+Loss func value:2.81499
+Loss func value:2.70995
+-----End Outer Step1-----
+---Loss func value:4.83979---
+Phase One
+Loss func value:4.91774
+Loss func value:5.06371
+Loss func value:4.82895
+Loss func value:4.712
+Loss func value:4.92442
+Loss func value:4.71419
+Loss func value:4.85081
+Loss func value:4.99486
+Loss func value:4.77059
+Loss func value:4.8217
+Loss func value:4.86576
+Loss func value:4.7168
+Loss func value:4.92364
+Loss func value:4.97142
+Loss func value:4.60341
+Phase Two
+Loss func value:4.34958
+Loss func value:4.1205
+Loss func value:3.91375
+Loss func value:3.72716
+Loss func value:3.55876
+Loss func value:3.40678
+Loss func value:3.26962
+Loss func value:3.14583
+Loss func value:3.03411
+Loss func value:2.93329
+Loss func value:2.84229
+Loss func value:2.76017
+Loss func value:2.68605
+Loss func value:2.61916
+Loss func value:2.55879
+-----End Outer Step2-----
+---Loss func value:2.47353---
+Phase One
+Loss func value:2.96722
+Loss func value:2.6047
+Loss func value:2.79336
+Loss func value:2.50055
+Loss func value:2.91908
+Loss func value:2.65407
+Loss func value:2.7795
+Loss func value:2.51957
+Loss func value:2.90177
+Loss func value:2.61815
+Loss func value:2.78554
+Loss func value:2.51106
+Loss func value:2.92587
+Loss func value:2.66399
+Loss func value:2.78304
+Phase Two
+Loss func value:2.72165
+Loss func value:2.66507
+Loss func value:2.61293
+Loss func value:2.56487
+Loss func value:2.52059
+Loss func value:2.47977
+Loss func value:2.44216
+Loss func value:2.40749
+Loss func value:2.37555
+Loss func value:2.3461
+Loss func value:2.31897
+Loss func value:2.29396
+Loss func value:2.27092
+Loss func value:2.24968
+Loss func value:2.2301
+-----End Outer Step3-----
+---Loss func value:2.51475---
+Phase One
+Loss func value:2.04853
+Loss func value:2.04136
+Loss func value:2.4522
+Loss func value:2.19271
+Loss func value:2.33641
+Loss func value:2.03109
+Loss func value:2.48648
+Loss func value:2.15483
+Loss func value:2.37393
+Loss func value:2.02416
+Loss func value:2.44435
+Loss func value:2.20484
+Loss func value:2.32096
+Loss func value:2.10527
+Loss func value:2.0688
+Phase Two
+Loss func value:2.06429
+Loss func value:2.06008
+Loss func value:2.05614
+Loss func value:2.05246
+Loss func value:2.04902
+Loss func value:2.04581
+Loss func value:2.0428
+Loss func value:2.04
+Loss func value:2.03737
+Loss func value:2.03492
+Loss func value:2.03263
+Loss func value:2.0305
+Loss func value:2.0285
+Loss func value:2.02663
+Loss func value:2.02488
+-----End Outer Step4-----
+---Loss func value:2.45818---
+Phase One
+Loss func value:2.17699
+Loss func value:2.34428
+Loss func value:2.24815
+Loss func value:2.21304
+Loss func value:2.17399
+Loss func value:2.24708
+Loss func value:2.19657
+Loss func value:2.4259
+Loss func value:2.27676
+Loss func value:2.24842
+Loss func value:2.1396
+Loss func value:2.32815
+Loss func value:2.19034
+Loss func value:2.40673
+Loss func value:2.29257
+Phase Two
+Loss func value:2.27609
+Loss func value:2.26054
+Loss func value:2.24586
+Loss func value:2.23201
+Loss func value:2.21894
+Loss func value:2.20661
+Loss func value:2.19497
+Loss func value:2.18399
+Loss func value:2.17363
+Loss func value:2.16385
+Loss func value:2.15462
+Loss func value:2.14591
+Loss func value:2.13769
+Loss func value:2.12994
+Loss func value:2.12262
+-----End Outer Step5-----
+---Loss func value:2.50135---
+Phase One
+Loss func value:2.36599
+Loss func value:2.29782
+Loss func value:2.32963
+Loss func value:2.22904
+Loss func value:2.36768
+Loss func value:2.26291
+Loss func value:2.27134
+Loss func value:2.26121
+Loss func value:2.24565
+Loss func value:2.3375
+Loss func value:2.22512
+Loss func value:2.47004
+Loss func value:2.37544
+Loss func value:2.35006
+Loss func value:2.27344
+Phase Two
+Loss func value:2.25994
+Loss func value:2.2471
+Loss func value:2.2349
+Loss func value:2.2233
+Loss func value:2.21228
+Loss func value:2.2018
+Loss func value:2.19183
+Loss func value:2.18236
+Loss func value:2.17336
+Loss func value:2.1648
+Loss func value:2.15666
+Loss func value:2.14892
+Loss func value:2.14157
+Loss func value:2.13458
+Loss func value:2.12794
+-----End Outer Step6-----
+---Loss func value:2.2136---
+Phase One
+Loss func value:2.2008
+Loss func value:2.22474
+Loss func value:2.18742
+Loss func value:2.2948
+Loss func value:2.27521
+Loss func value:2.29982
+Loss func value:2.16988
+Loss func value:2.20197
+Loss func value:2.21991
+Loss func value:2.16623
+Loss func value:2.34245
+Loss func value:2.28288
+Loss func value:2.24931
+Loss func value:2.17727
+Loss func value:2.20232
+Phase Two
+Loss func value:2.19343
+Loss func value:2.18493
+Loss func value:2.1768
+Loss func value:2.16903
+Loss func value:2.1616
+Loss func value:2.1545
+Loss func value:2.14771
+Loss func value:2.14122
+Loss func value:2.13501
+Loss func value:2.12908
+Loss func value:2.1234
+Loss func value:2.11798
+Loss func value:2.1128
+Loss func value:2.10784
+Loss func value:2.1031
+-----End Outer Step7-----
+---Loss func value:2.17512---
+Phase One
+Loss func value:2.13427
+Loss func value:2.19823
+Loss func value:2.09019
+Loss func value:2.21147
+Loss func value:2.09231
+Loss func value:2.132
+Loss func value:2.1761
+Loss func value:2.22138
+Loss func value:2.0849
+Loss func value:2.11369
+Loss func value:2.12654
+Loss func value:2.10869
+Loss func value:2.16114
+Loss func value:2.13956
+Loss func value:2.13077
+Phase Two
+Loss func value:2.12559
+Loss func value:2.12062
+Loss func value:2.11584
+Loss func value:2.11126
+Loss func value:2.10685
+Loss func value:2.10262
+Loss func value:2.09856
+Loss func value:2.09465
+Loss func value:2.0909
+Loss func value:2.0873
+Loss func value:2.08385
+Loss func value:2.08053
+Loss func value:2.07734
+Loss func value:2.07428
+Loss func value:2.07133
+-----End Outer Step8-----
+---Loss func value:2.24678---
+Phase One
+Loss func value:2.12399
+Loss func value:2.04239
+Loss func value:2.04324
+Loss func value:2.1137
+Loss func value:2.05756
+Loss func value:2.1138
+Loss func value:2.05386
+Loss func value:2.02221
+Loss func value:2.13618
+Loss func value:2.05314
+Loss func value:2.151
+Loss func value:2.0462
+Loss func value:2.02692
+Loss func value:2.15512
+Loss func value:2.1289
+Phase Two
+Loss func value:2.12425
+Loss func value:2.11978
+Loss func value:2.11546
+Loss func value:2.1113
+Loss func value:2.10729
+Loss func value:2.10342
+Loss func value:2.0997
+Loss func value:2.0961
+Loss func value:2.09264
+Loss func value:2.0893
+Loss func value:2.08608
+Loss func value:2.08298
+Loss func value:2.07999
+Loss func value:2.07711
+Loss func value:2.07433
+-----End Outer Step9-----
+---Loss func value:2.32284---
+Phase One
+Loss func value:2.23552
+Loss func value:2.27159
+Loss func value:2.17023
+Loss func value:2.14591
+Loss func value:2.12313
+Loss func value:2.09044
+Loss func value:2.15068
+Loss func value:2.11281
+Loss func value:2.11215
+Loss func value:2.05833
+Loss func value:2.06561
+Loss func value:2.09209
+Loss func value:2.07329
+Loss func value:2.09238
+Loss func value:2.06138
+Phase Two
+Loss func value:2.05935
+Loss func value:2.05739
+Loss func value:2.05549
+Loss func value:2.05366
+Loss func value:2.05188
+Loss func value:2.05017
+Loss func value:2.04851
+Loss func value:2.04691
+Loss func value:2.04536
+Loss func value:2.04386
+Loss func value:2.04241
+Loss func value:2.04101
+Loss func value:2.03965
+Loss func value:2.03834
+Loss func value:2.03707
+-----End Outer Step10-----
+---Loss func value:2.06305---
+Phase One
+Loss func value:2.06888
+Loss func value:2.05096
+Loss func value:2.04463
+Loss func value:2.08201
+Loss func value:2.04754
+Loss func value:2.08589
+Loss func value:2.04547
+Loss func value:2.09112
+Loss func value:2.02891
+Loss func value:2.04433
+Loss func value:2.06232
+Loss func value:2.04696
+Loss func value:2.07168
+Loss func value:2.04422
+Loss func value:2.08366
+Phase Two
+Loss func value:2.0811
+Loss func value:2.07863
+Loss func value:2.07623
+Loss func value:2.0739
+Loss func value:2.07164
+Loss func value:2.06946
+Loss func value:2.06734
+Loss func value:2.06528
+Loss func value:2.06329
+Loss func value:2.06135
+Loss func value:2.05948
+Loss func value:2.05766
+Loss func value:2.0559
+Loss func value:2.0542
+Loss func value:2.05254
+-----End Outer Step11-----
+---Loss func value:2.20627---
+Phase One
+Loss func value:2.10927
+Loss func value:2.08085
+Loss func value:2.10581
+Loss func value:2.06778
+Loss func value:2.12583
+Loss func value:2.08114
+Loss func value:2.05468
+Loss func value:2.07689
+Loss func value:2.05655
+Loss func value:2.06382
+Loss func value:2.09149
+Loss func value:2.06566
+Loss func value:2.08822
+Loss func value:2.06484
+Loss func value:2.05603
+Phase Two
+Loss func value:2.05444
+Loss func value:2.0529
+Loss func value:2.0514
+Loss func value:2.04994
+Loss func value:2.04852
+Loss func value:2.04715
+Loss func value:2.04581
+Loss func value:2.04451
+Loss func value:2.04325
+Loss func value:2.04202
+Loss func value:2.04083
+Loss func value:2.03967
+Loss func value:2.03855
+Loss func value:2.03745
+Loss func value:2.03639
+-----End Outer Step12-----
+---Loss func value:2.16316---
+Phase One
+Loss func value:2.11176
+Loss func value:2.10707
+Loss func value:2.12219
+Loss func value:2.06874
+Loss func value:2.06787
+Loss func value:2.07345
+Loss func value:2.06889
+Loss func value:2.08922
+Loss func value:2.06767
+Loss func value:2.08731
+Loss func value:2.05719
+Loss func value:2.09166
+Loss func value:2.06906
+Loss func value:2.10293
+Loss func value:2.08338
+Phase Two
+Loss func value:2.08117
+Loss func value:2.07902
+Loss func value:2.07693
+Loss func value:2.07489
+Loss func value:2.07291
+Loss func value:2.07098
+Loss func value:2.0691
+Loss func value:2.06727
+Loss func value:2.06548
+Loss func value:2.06375
+Loss func value:2.06206
+Loss func value:2.06042
+Loss func value:2.05882
+Loss func value:2.05726
+Loss func value:2.05574
+-----End Outer Step13-----
+---Loss func value:2.17141---
+Phase One
+Loss func value:2.09751
+Loss func value:2.06237
+Loss func value:2.08055
+Loss func value:2.04216
+Loss func value:2.048
+Loss func value:2.04903
+Loss func value:2.03911
+Loss func value:2.05719
+Loss func value:2.04345
+Loss func value:2.06081
+Loss func value:2.03619
+Loss func value:2.09037
+Loss func value:2.06833
+Loss func value:2.0786
+Loss func value:2.05336
+Phase Two
+Loss func value:2.05203
+Loss func value:2.05074
+Loss func value:2.04948
+Loss func value:2.04825
+Loss func value:2.04705
+Loss func value:2.04588
+Loss func value:2.04474
+Loss func value:2.04363
+Loss func value:2.04254
+Loss func value:2.04149
+Loss func value:2.04046
+Loss func value:2.03945
+Loss func value:2.03847
+Loss func value:2.03752
+Loss func value:2.03658
+-----End Outer Step14-----
+---Loss func value:2.14274---
+Phase One
+Loss func value:2.08835
+Loss func value:2.06416
+Loss func value:2.09883
+Loss func value:2.07425
+Loss func value:2.09372
+Loss func value:2.06512
+Loss func value:2.06828
+Loss func value:2.04584
+Loss func value:2.04174
+Loss func value:2.06057
+Loss func value:2.07726
+Loss func value:2.03765
+Loss func value:2.03045
+Loss func value:2.07412
+Loss func value:2.06456
+Phase Two
+Loss func value:2.06305
+Loss func value:2.06157
+Loss func value:2.06013
+Loss func value:2.05873
+Loss func value:2.05735
+Loss func value:2.05601
+Loss func value:2.0547
+Loss func value:2.05342
+Loss func value:2.05217
+Loss func value:2.05095
+Loss func value:2.04976
+Loss func value:2.0486
+Loss func value:2.04746
+Loss func value:2.04635
+Loss func value:2.04527
+-----End Outer Step15-----
+---Loss func value:2.12145---
+End output:
+Un 
+Un 
+P8_1_3
+P8_0_4
+P8_0_5
+P8_0_6
+P8_0_7
+P8_1_8
+Un 
+Un 
+P15_1_1
+P15_1_2
+P15_0_3
+P15_0_4
+P15_0_5
+P15_0_6
+P15_0_7
+P15_1_8
+P15_1_1
+P15_1_2
+P15_0_3
+P15_0_4
+P15_0_5
+P15_0_6
+P15_0_7
+P15_1_8
+P15_1_1
+P15_0_2
+P15_1_3
+P15_1_4
+P15_0_5
+P15_0_6
+P15_0_7
+P15_1_8
+P15_1_1
+P15_0_2
+P15_0_3
+P15_1_4
+P15_0_5
+P15_1_6
+

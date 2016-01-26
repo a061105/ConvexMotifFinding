@@ -15,10 +15,11 @@ extern double OptStep2( MAT_D W1,
 						MAT_D W2,
 						MAT_D YY,
 						MAT_D DIR,
-						vector<int> pattern_ind);
+						vector<int> pattern_ind,
+						vector<int>& pattern_length);
 extern vector<int> Frank_Wolfe(	MAT_D Gradf);
 extern void Report_dir(vector<int> AT);
-extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind);
+extern MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind,vector<int>& pattern_length);
 
 //----------------------Update W1------------------------------
 void OptPhaseOne(	MAT_D& CC,
@@ -62,10 +63,11 @@ void OptPhaseTwo(	MAT_D& CC,
 	MAT_D Gradw2;
 	MAT_D W2dir;
 	vector<int> pattern_ind(Kopt,0);
+	vector<int> pattern_length(KG,L);
 	double Step_size=MaxStep_size;
 	Gradw2=Gradf(WW1,WW2,YY);
-	W2dir=GroupConsDir(Gradw2, pattern_ind);
-	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
+	W2dir=GroupConsDir(Gradw2, pattern_ind,pattern_length);
+	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind,pattern_length);
 	//find max step_size
 	MaxStep_size=Step_size;
 	//Report_dir(Aton);
