@@ -1,4 +1,4 @@
-#include"incl_head.h"
+#include"incl_head.h" 
 
 void ResOut( MAT_D W1){
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){

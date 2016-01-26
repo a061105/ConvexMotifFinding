@@ -1,4 +1,4 @@
-#include"incl_head.h"
+#include"incl_head.h" 
 
 double OptStep1(MAT_D CC,
 				MAT_D W1,

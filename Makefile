@@ -1,4 +1,4 @@
-FLAG = -O3
+FLAG = -O3 
 
 
 all: clean train
