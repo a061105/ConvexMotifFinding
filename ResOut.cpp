@@ -18,7 +18,7 @@ void ResOut( MAT_D W1,
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){
 		int Max_stat=0;
 		double Max_entree=0;
-		for(int Stat=0; Stat<J;Stat++){
+		for(int Stat=0; Stat<J1+J2;Stat++){
 			if(W1[Stat][Digit_num]>Max_entree){
 				Max_stat=Stat;
 				Max_entree=W1[Stat][Digit_num];
@@ -27,13 +27,23 @@ void ResOut( MAT_D W1,
 		if(Max_stat==0){
 			myfile<<"{\\color{Black}"<<InSeq[Digit_num]<<"}\n";
 		}else{
-			int charnum=(Max_stat-1)/(2*L);
-			int inner_stat=Max_stat%(2*L);
-			int One_or_zero=(Max_stat%(2*L)+1)%2;  
-			int AA=1+charnum;
-			int Inner_seq=(Max_stat%(2*L)+1)/2;
+			if(Max_stat<J1){
+				int charnum=(Max_stat-1)/(2*L);
+				int inner_stat=Max_stat%(2*L);
+				int One_or_zero=(Max_stat%(2*L)+1)%2;  
+				int AA=1+charnum;
+				int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
-				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}\n";
+				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<Inner_seq<<"\n";
+			}else{// to be in shorter pattern
+				int charnum=(Max_stat-J1)/(2*Lmin)+KG1;
+				int inner_stat=(Max_stat-J1+1)%(2*Lmin);
+				int One_or_zero=(inner_stat+1)%2;  
+				int AA=1+charnum;
+				int Inner_seq=(inner_stat+1)/2;
+				if(Inner_seq==0) Inner_seq=L;
+				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<Inner_seq<<"\n";
+			}
 		}
 	}
 	cout<<endl;
@@ -47,8 +57,8 @@ double LossfuncW1(	MAT_D CC,
 					MAT_D W2,
 					MAT_D YY){
 	double loss=0;
-	for(int t=0; t<Tseq; t++){
-		for(int j=0; j<J; j++){
+	for(int j=0; j<J1+J2; j++){
+		for(int t=0; t<Tseq; t++){
 			loss+=CC[j][t]*W1[j][t]+mu*pow((W1[j][t]-W2[j][t]+YY[j][t]/mu),2);
 			//loss-=mu*pow((YY[j][t]/mu),2);
 		}
@@ -60,8 +70,8 @@ double LossfuncW1(	MAT_D CC,
 double LossfuncW1(	MAT_D CC,
 					MAT_D W1){
 	double loss=0;
-	for(int t=0; t<Tseq; t++){
-		for(int j=0; j<J; j++){
+	for(int j=0; j<J1+J2; j++){
+		for(int t=0; t<Tseq; t++){
 			loss+=CC[j][t]*W1[j][t];;
 		}
 	}
@@ -71,7 +81,7 @@ double LossfuncW1(	MAT_D CC,
 double diff(MAT_D WW1,
 			MAT_D WW2){
 	double maxdiff=0;
-	for(int j=0; j<J; j++){
+	for(int j=0; j<J1+J2; j++){
 		for(int t=0; t<Tseq; t++){
 			if(abs(WW1[j][t]-WW2[j][t])>maxdiff){
 				maxdiff=abs(WW1[j][t]-WW2[j][t]);
@@ -104,13 +114,13 @@ void Report_dir(vector<int> AT){
 }			
 
 double DisToOne(MAT_D WW1){
-	double maxdiff=0;
-	for(int j=0; j<J; j++){
+	double mindiff=1;
+	for(int j=0; j<J1+J2; j++){
 		for(int t=0; t<Tseq; t++){
-			if(abs(WW1[j][t]-1.0)>maxdiff && WW1[j][t]>1.0/Kopt){
-				maxdiff=abs(WW1[j][t]-1.0);
+			if(abs(WW1[j][t]-1.0)<mindiff){
+				mindiff=abs(WW1[j][t]-1.0);
 			}
 		}
 	}
-	return maxdiff;
+	return mindiff;
 }

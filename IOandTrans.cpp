@@ -20,7 +20,7 @@ string Word2Bin(const string word){
 	return res;
 }
 
-vector<int> Topk( vector<double> Array,vector<int> length, int k){
+vector<int> Topk( vector<double> Array, int k){
 	vector<int> Top_indi(k,-1);
 
 	for(int indice=0; indice<k; indice++){

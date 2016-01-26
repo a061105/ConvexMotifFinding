@@ -30,8 +30,8 @@ int main()
 	string InSeq=Word2Bin(word);
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
-	MAT_D Initial(J,col1);
-	MAT_D C(J,col1);
+	MAT_D Initial(J1+J2,col1);
+	MAT_D C(J1+J2,col1);
 	C[0].assign(col0.begin(),col0.end());
 	// initialize W1, all unassigned
 	MAT_D W1(C);
@@ -42,10 +42,17 @@ int main()
 	// continue construct C 
 	for(int t=0; t<Tseq; t++){
 		bool dig=(InSeq[t]=='1');
-		for(int kk=0; kk<KG; kk++){
+		for(int kk=0; kk<KG1; kk++){
 			for(int j=0; j<2*L; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
 					C[(1+2*L*kk)+j][t]=cost_mis;
+				}
+			}
+		}
+		for(int kk=0; kk<KG2; kk++){
+			for(int j=0; j<2*Lmin; j++){
+				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
+					C[2*KG1*L+(1+2*Lmin*kk)+j][t]=cost_mis;
 				}
 			}
 		}
@@ -53,7 +60,7 @@ int main()
 	ResOut(W1,InSeq);
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
-		for(int kk=0; kk<KG; kk++){
+		for(int kk=0; kk<KG1; kk++){
 			int patnum=kk;
 			for(int j=L; j>0; j--){
 				int zero_slot=2*L*kk+2*j-1;
@@ -64,9 +71,20 @@ int main()
 				if(kk%2==1){
 					C[zero_slot][t]+=2*short_prefer;
 					C[zero_slot+1][t]+=2*short_prefer;
-				}else{
-					C[zero_slot][t]+=short_prefer*(0);
-					C[zero_slot+1][t]+=short_prefer*(0);
+				}
+			}
+		}
+		for(int kk=0; kk<KG2; kk++){
+			int patnum=kk;
+			for(int j=Lmin; j>0; j--){
+				int zero_slot=J1+2*Lmin*kk+2*j-2;//check
+				bool ifpref1=patnum%2;
+				patnum/=2;
+				double rapre=random;
+				C[zero_slot+!ifpref1][t]+=prefer;
+				if(kk%2==1){
+					C[zero_slot][t]+=2*short_prefer;
+					C[zero_slot+1][t]+=2*short_prefer;
 				}
 			}
 		}
@@ -86,7 +104,7 @@ int main()
 	double Opt_val=LossfuncW1(C,Wopt);
 	cout<<"Optimal is:"<<Opt_val<<endl;*/
 	//----------------------------------------------------------------------------
-	MAT_D Y(J,col1);  // initialize Y with all zeros
+	MAT_D Y(J1+J2,col1);  // initialize Y with all zeros
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		// Optimization Phase One
