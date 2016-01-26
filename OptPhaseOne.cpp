@@ -1,4 +1,4 @@
-#include"incl_head.h" 
+#include"incl_head.h"
 MAT_D Gradf(		MAT_D CC,
 					MAT_D WW1,
 					MAT_D WW2,
