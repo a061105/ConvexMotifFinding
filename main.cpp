@@ -60,8 +60,8 @@ int main()
 				patnum/=2;
 				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
-				C[zero_slot][t]+=global_prefer*(kk+rapre);
-				C[zero_slot+1][t]+=global_prefer*(kk+rapre);
+				C[zero_slot][t]+=global_prefer*(rapre);
+				C[zero_slot+1][t]+=global_prefer*(rapre);
 			}
 		}
 	}
@@ -100,7 +100,7 @@ int main()
 		double diffW12=diff(W1,W2);
 		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<endl;
 		//ResOut(W2);
-		if(diffW12<outer_eps) break;
+		if(diffW12<outer_eps && LossfuncW1(C,W1)<outer_eps) break;
 	}
 	cout<<"End output W1:"<<endl;
 	ResOut(W1);

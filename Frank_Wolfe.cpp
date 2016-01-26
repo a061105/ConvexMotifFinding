@@ -62,6 +62,14 @@ vector<int> Frank_Wolfe(	MAT_D Gradf)
 
 			}
 			for(int l=Lmin-1; l<L; l++){
+				// rulling out short patterns
+				int pat_kinds=pow(2,(double)(l+1));
+				int pat_dist=KG/pat_kinds;
+				while(ch%pat_dist!=0){
+					l++;
+					pat_kinds=pow(2,(double)(l+1));
+					pat_dist=KG/pat_kinds;
+				}
 				for(int i=0; i<KG+1; i++){   // for an possibly end char_digit aLmin...aL bLmin...bL ...
 					int s1=2*ch*L+1+2*l;
 					int s2;
