@@ -63,9 +63,6 @@ int main()
 				if(kk%2==1){
 					C[zero_slot][t]+=2*short_prefer;
 					C[zero_slot+1][t]+=2*short_prefer;
-				}else{
-					C[zero_slot][t]+=short_prefer*(0);
-					C[zero_slot+1][t]+=short_prefer*(0);
 				}
 			}
 		}
