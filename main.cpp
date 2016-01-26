@@ -66,12 +66,9 @@ int main()
 				int zero_slot=2*L*kk+2*j-1;
 				bool ifpref1=patnum%2;
 				patnum/=2;
-				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
-				if(kk%2==1){
-					C[zero_slot][t]+=2*short_prefer;
-					C[zero_slot+1][t]+=2*short_prefer;
-				}
+				C[zero_slot][t]+=2*short_prefer*random;
+				C[zero_slot+1][t]+=2*short_prefer*random;
 			}
 		}
 		for(int kk=0; kk<KG2; kk++){
@@ -80,12 +77,9 @@ int main()
 				int zero_slot=J1+2*Lmin*kk+2*j-2;//check
 				bool ifpref1=patnum%2;
 				patnum/=2;
-				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
-				if(kk%2==1){
-					C[zero_slot][t]+=2*short_prefer;
-					C[zero_slot+1][t]+=2*short_prefer;
-				}
+				C[zero_slot][t]+=2*short_prefer*random;
+				C[zero_slot+1][t]+=2*short_prefer*random;
 			}
 		}
 	}
