@@ -192,7 +192,9 @@ MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind,vector<int>& pattern_l
 	}//end for this pattern
 	
 	pattern_ind=Topk(pattern_score,pattern_length,Kopt);
-	//cout<<pattern_length[pattern_ind[0]]<<"and length"<<pattern_length[pattern_ind[1]]<<endl;
+
+	cout<<"P"<<pattern_ind[0]<<" and length "<<pattern_length[pattern_ind[0]]<<endl;
+	cout<<"P"<<pattern_ind[1]<<" and length "<<pattern_length[pattern_ind[1]]<<endl;
 
 	return R2;
 }
