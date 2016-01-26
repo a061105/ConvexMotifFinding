@@ -16,7 +16,7 @@ string Word2Bin(const string word){
 		}
 		if(word[p]==' ') res.push_back('1');
 	}
-	res.push_back('0');
+	res.push_back('1');
 	return res;
 }
 

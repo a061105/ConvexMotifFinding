@@ -17,7 +17,7 @@
 using namespace std;
 typedef vector<vector<double> > MAT_D; 
 
-	const string word="aaaa";
+	const string word="cccc";
 	const int word_length=4,space_num=1;
 	const int L=6,Lmin=5;
 	const int KG=64,Kopt=2;  // from 00000(means space) 00001(a) ... 11010(z)
