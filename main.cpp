@@ -61,6 +61,9 @@ int main()
 				double rapre=random;
 				C[zero_slot+!ifpref1][t]+=prefer;
 				if(kk%2==1){
+					C[zero_slot][t]+=2*short_prefer*(rapre);
+					C[zero_slot+1][t]+=2*short_prefer*(rapre);
+				}else{
 					C[zero_slot][t]+=short_prefer*(rapre);
 					C[zero_slot+1][t]+=short_prefer*(rapre);
 				}
