@@ -41,7 +41,7 @@ void ResOut( MAT_D W1,
 				int One_or_zero=(inner_stat+1)%2;  
 				int AA=1+charnum;
 				int Inner_seq=(inner_stat+1)/2;
-				if(Inner_seq==0) Inner_seq=L;
+				if(Inner_seq==0) Inner_seq=Lmin;
 				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<Inner_seq<<"\n";
 			}
 		}

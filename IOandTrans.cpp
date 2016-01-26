@@ -2,7 +2,7 @@
 
 string Word2Bin(const string word){
 	string res;
-	int L_char=4;
+	int L_char=5;
 	for(int p=0; p<word_length; p++){
 		int wp=word[p]-'a'+1;
 		if(word[p]==' ') wp=(int)pow((double)2,L_char);
@@ -16,7 +16,6 @@ string Word2Bin(const string word){
 		}
 		if(word[p]==' ') res.push_back('1');
 	}
-	res.push_back('1');
 	return res;
 }
 
