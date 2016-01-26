@@ -30,6 +30,7 @@ int main()
 	string InSeq=Word2Bin(word);
 	// construct C
 	vector<double> col0(Tseq,cost_un),col1(Tseq,0.0);
+	MAT_D Initial(J,col1);
 	MAT_D C(J,col1);
 	C[0].assign(col0.begin(),col0.end());
 	// initialize W1, all unassigned
@@ -95,6 +96,7 @@ int main()
 			if(step_length<inner_eps) break;
 		}
 		//Optimization Phase Two
+		W2=Initial;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			double step_length=2.0/(Inner_iter+2);
 			OptPhaseTwo(C,W1,W2,Y,step_length);
