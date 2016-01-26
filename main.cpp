@@ -1,5 +1,6 @@
 #include"incl_head.h"
-extern void			ResOut( MAT_D W1);
+extern void			ResOut( MAT_D W1,
+							string InSeq);
 extern double LossfuncW1(	MAT_D CC,
 							MAT_D W1,
 							MAT_D W2,
@@ -33,8 +34,6 @@ int main()
 	C[0].assign(col0.begin(),col0.end());
 	// initialize W1, all unassigned
 	MAT_D W1(C);
-	cout<<"Initial is:"<<endl;
-	ResOut(W1);
 	// Initialize W2 -----Unassigned
 	MAT_D W2(C);
 	
@@ -50,6 +49,7 @@ int main()
 			}
 		}
 	}
+	ResOut(W1,InSeq);
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
 		for(int kk=0; kk<KG; kk++){
@@ -108,9 +108,9 @@ int main()
 		if(diffW12<outer_eps) break;
 	}
 	cout<<"End output W1:"<<endl;
-	ResOut(W1);
+	ResOut(W1,InSeq);
 	cout<<"End output W2:"<<endl;
-	ResOut(W2);
+	ResOut(W2,InSeq);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;

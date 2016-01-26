@@ -1,6 +1,20 @@
 #include"incl_head.h"
 
-void ResOut( MAT_D W1){
+void ResOut( MAT_D W1,
+			string InSeq){
+	ofstream myfile;
+	vector<string> color;
+	string line;
+	ifstream colorfile ("color.txt");
+	if (colorfile.is_open()){
+		while ( getline (colorfile,line) ){
+			color.push_back(line);
+		}
+		colorfile.close();
+	}else{
+		cout<<"Unable to open file";
+	}
+	myfile.open ("result.txt");
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){
 		int Max_stat=0;
 		double Max_entree=0;
@@ -11,7 +25,7 @@ void ResOut( MAT_D W1){
 			}
 		}
 		if(Max_stat==0){
-			cout<<"Un"<<" "<<endl;
+			myfile<<"{\color{Black}"<<InSeq[Digit_num]<<"}\n";
 		}else{
 			int charnum=(Max_stat-1)/(2*L);
 			int inner_stat=Max_stat%(2*L);
@@ -19,10 +33,11 @@ void ResOut( MAT_D W1){
 			int AA=1+charnum;
 			int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
-			cout<<"P"<<AA<<"_"<<One_or_zero<<"_"<<Inner_seq<<endl;
+				myfile<<"{\color{"<<color[AA]<<"}"<<One_or_zero<<"}";
 		}
 	}
 	cout<<endl;
+	myfile.close();
 	return;
 }
 	

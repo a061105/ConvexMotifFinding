@@ -11,7 +11,7 @@ extern double OptStep1( MAT_D CC,
 						MAT_D W2,
 						MAT_D YY,
 						vector<int> Aton);
-extern vector<double> OptStep2( MAT_D W1,
+extern double OptStep2( MAT_D W1,
 						MAT_D W2,
 						MAT_D YY,
 						MAT_D DIR,
@@ -62,19 +62,19 @@ void OptPhaseTwo(	MAT_D& CC,
 	MAT_D Gradw2;
 	MAT_D W2dir;
 	vector<int> pattern_ind(Kopt,0);
-	vector<double> Step_size(KG,MaxStep_size);
+	double Step_size=MaxStep_size;
 	Gradw2=Gradf(WW1,WW2,YY);
 	W2dir=GroupConsDir(Gradw2, pattern_ind);
 	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
 	//find max step_size
-	MaxStep_size=*max_element(Step_size.begin(),Step_size.end());
+	MaxStep_size=Step_size;
 	//Report_dir(Aton);
 	// update W2
 	
 	for(int kk=0; kk<KG; kk++){
 		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
 			for(int t=0; t<Tseq; t++){
-				WW2[j][t]*=(1.0-Step_size[kk]);
+				WW2[j][t]*=(1.0-Step_size);
 			}
 		}
 	}
@@ -84,7 +84,7 @@ void OptPhaseTwo(	MAT_D& CC,
 		int kk=pattern_ind[pat];
 		for(int j=2*L*kk+1; j<2*L*(kk+1)+1; j++){
 			for(int t=0; t<Tseq; t++){
-				WW2[j][t]+=W2dir[j][t]*Step_size[kk];
+				WW2[j][t]+=W2dir[j][t]*Step_size;
 			}
 		}
 	}
