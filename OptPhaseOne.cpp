@@ -68,8 +68,8 @@ void OptPhaseTwo(	MAT_D& CC,
 	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
 	//find max step_size
 	MaxStep_size=Step_size;
-	cout<<Step_size<<endl;
-	cout<<endl;
+	//cout<<Step_size<<endl;
+	//cout<<endl;
 	//Report_dir(Aton);
 	// update W2
 	
