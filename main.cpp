@@ -135,8 +135,13 @@ int main()
 		for(int Inner_iter=0; Inner_iter<Inner_num*10; Inner_iter++){
 			double step_length=1;
 			double the_loss=MAX_NUMBER;
-			SamplePhaseTwo(C,W1,W2,Y,step_length,Aton,the_loss);
-			if(min_loss>the_loss) min_loss=the_loss;
+			vector<int> InAton(Tseq,0);
+			SamplePhaseTwo(C,W1,W2,Y,step_length,InAton,the_loss);
+			if(min_loss>the_loss){
+				min_loss=the_loss;
+				Aton=InAton;
+				cout<<"Sample Loss: "<<the_loss<<endl;
+			}
 			if(min_loss<outer_eps) break;
 		}
 
