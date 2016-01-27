@@ -145,3 +145,83 @@ MAT_D UpdateY(	MAT_D WW1,
 	return YR;
 }
 
+void SamplePhaseTwo(		MAT_D& CC,
+							MAT_D& WW1,
+							MAT_D& WW2,
+							MAT_D& YY,
+							double& MaxStep_size,
+							vector<int>& Aton,
+							double& loss){
+	
+	MAT_D Fake_CC(CC);
+	MAT_D Gradw2;
+	MAT_D W2dir;
+	vector<int> pattern_ind(Kopt,0);
+	double Step_size=MaxStep_size;
+	Gradw2=Gradf(WW1,WW2,YY);
+	W2dir=GroupConsDir(Gradw2, pattern_ind);
+	Step_size=OptStep2(WW1,WW2,YY,W2dir,pattern_ind);
+	//find max step_size
+	MaxStep_size=Step_size;
+	//cout<<Step_size<<endl;
+	//cout<<endl;
+	// add penalty to unchosen patterns
+	for(int j=0; j<J1+J2; j++){
+			for(int t=0; t<Tseq; t++){
+				Fake_CC[j][t]+=cost_mis;
+			}
+	}
+	for(int indi=0; indi<Kopt; indi++){
+		int kk=pattern_ind[indi];
+		int pat_length=L;
+		if(kk>=KG1) pat_length=Lmin;
+		for(int j=0; j<2*pat_length; j++){
+			int jj=2*L*kk+1+j;
+			if(kk>=KG1) jj=2*Lmin*(kk-KG1)+J1+j;
+			for(int t=0; t<Tseq; t++){
+				Fake_CC[jj][t]-=cost_mis;
+			}
+		}
+	}
+
+	Aton=Frank_Wolfe(Fake_CC);
+	loss=0;
+	for(int t=0; t<Tseq; t++){
+		int j=Aton[t];
+		loss+=Fake_CC[j][t];
+	}
+	// update W2
+
+
+
+	
+
+	for(int j=0; j<J1+J2; j++){
+			for(int t=0; t<Tseq; t++){
+				WW2[j][t]*=(1.0-Step_size);
+			}
+	}
+
+	
+	for(int pat=0; pat<Kopt; pat++){
+		int kk=pattern_ind[pat];
+		int the_length=L;
+		if(kk>=KG1) the_length=Lmin;
+		for(int inn=0; inn<2*the_length; inn++){
+			int j=2*L*kk+inn+1;
+			if(kk>=KG1) j=2*Lmin*(kk-KG1)+J1+inn;
+			for(int t=0; t<Tseq; t++){
+				WW2[j][t]+=W2dir[j][t]*Step_size;
+			}
+		}
+	}
+	// Fit unassigned entrees
+	for(int t=0; t<Tseq; t++){
+		double W0t=WW1[0][t]+YY[0][t]/mu;
+		if(W0t>1) W0t=1.0;
+		if(W0t<0) W0t=0;
+		WW2[0][t]=W0t;
+	}
+	//cout<<MaxStep_size<<endl;
+	return;
+}

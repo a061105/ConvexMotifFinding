@@ -221,4 +221,3 @@ MAT_D GroupConsDir(MAT_D Gradw2, vector<int>& pattern_ind){
 	return R2;
 }
 
-
