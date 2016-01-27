@@ -34,7 +34,3 @@ vector<int> Topk( vector<double> Array, int k){
 	}
 	return Top_indi;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c124af0b2945486df9d85c9135aef7db4e6f16e

@@ -1,72 +1,72 @@
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}1}
-{\color{Black}0}
-{\color{Black}0}
-{\color{Black}1}
+{\color{RedOrange	 	 	}1}45_1
+{\color{RedOrange	 	 	}0}45_2
+{\color{RedOrange	 	 	}1}45_3
+{\color{RedOrange	 	 	}1}45_4
+{\color{RedOrange	 	 	}0}45_5
+{\color{RedOrange	 	 	}0}45_6
+{\color{GreenYellow	 }0}22_1
+{\color{GreenYellow	 }1}22_2
+{\color{GreenYellow	 }0}22_3
+{\color{GreenYellow	 }1}22_4
+{\color{GreenYellow	 }0}22_5
+{\color{GreenYellow	 }1}22_6
+{\color{Brown	 	 		}1}74_1
+{\color{Brown	 	 		}1}74_2
+{\color{Brown	 	 		}0}74_3
+{\color{Brown	 	 		}0}74_4
+{\color{Brown	 	 		}1}74_5
+{\color{Emerald	 }0}16_1
+{\color{Emerald	 }0}16_2
+{\color{Emerald	 }1}16_3
+{\color{Emerald	 }1}16_4
+{\color{Emerald	 }1}16_5
+{\color{Emerald	 }1}16_6
+{\color{White	 }1}62_1
+{\color{White	 }1}62_2
+{\color{White	 }1}62_3
+{\color{White	 }1}62_4
+{\color{White	 }0}62_5
+{\color{White	 }1}62_6
+{\color{Peach	 	 		}1}37_1
+{\color{Peach	 	 		}0}37_2
+{\color{Peach	 	 		}0}37_3
+{\color{Peach	 	 		}1}37_4
+{\color{Peach	 	 		}0}37_5
+{\color{Peach	 	 		}0}37_6
+{\color{Peach	 	 		}1}37_1
+{\color{Peach	 	 		}0}37_2
+{\color{Peach	 	 		}0}37_3
+{\color{Peach	 	 		}1}37_4
+{\color{Peach	 	 		}0}37_5
+{\color{Peach	 	 		}0}37_6
+{\color{Brown	 	 		}0}74_1
+{\color{Brown	 	 		}1}74_2
+{\color{Brown	 	 		}0}74_3
+{\color{Brown	 	 		}0}74_4
+{\color{Brown	 	 		}1}74_5
+{\color{White	 }1}62_1
+{\color{White	 }1}62_2
+{\color{White	 }1}62_3
+{\color{White	 }1}62_4
+{\color{White	 }1}62_5
+{\color{White	 }1}62_6
+{\color{Gray	 }1}87_1
+{\color{Gray	 }0}87_2
+{\color{Gray	 }1}87_3
+{\color{Gray	 }1}87_4
+{\color{Gray	 }0}87_5
+{\color{Brown	 	 		}0}74_1
+{\color{Brown	 	 		}1}74_2
+{\color{Brown	 	 		}0}74_3
+{\color{Brown	 	 		}0}74_4
+{\color{Brown	 	 		}1}74_5
+{\color{Brown	 	 		}0}74_1
+{\color{Brown	 	 		}0}74_2
+{\color{Brown	 	 		}0}74_3
+{\color{Brown	 	 		}1}74_4
+{\color{Brown	 	 		}1}74_5
+{\color{Brown	 	 		}0}74_1
+{\color{Brown	 	 		}1}74_2
+{\color{Brown	 	 		}0}74_3
+{\color{Brown	 	 		}0}74_4
+{\color{Brown	 	 		}1}74_5

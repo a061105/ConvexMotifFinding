@@ -34,7 +34,7 @@ void ResOut( MAT_D W1,
 				int AA=1+charnum;
 				int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
-				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<AA<<" "<<Inner_seq<<"\n";
+				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<AA<<"_"<<Inner_seq<<"\n";
 			}else{// to be in shorter pattern
 				int charnum=(Max_stat-J1)/(2*Lmin)+KG1;
 				int inner_stat=(Max_stat-J1+1)%(2*Lmin);
@@ -42,7 +42,7 @@ void ResOut( MAT_D W1,
 				int AA=1+charnum;
 				int Inner_seq=(inner_stat+1)/2;
 				if(Inner_seq==0) Inner_seq=Lmin;
-				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<AA<<" "<<Inner_seq<<"\n";
+				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<AA<<"_"<<Inner_seq<<"\n";
 			}
 		}
 	}
