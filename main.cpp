@@ -20,6 +20,13 @@ extern void OptPhaseTwo(	MAT_D& CC,
 							MAT_D& WW2,
 							MAT_D& YY,
 							double& step_size);
+extern void SamplePhaseTwo(	MAT_D& CC,
+							MAT_D& WW1,
+							MAT_D& WW2,
+							MAT_D& YY,
+							double& step_size,
+							vector<int>& Aton,
+							double& min_loss);
 extern double diff(			MAT_D WW1,
 							MAT_D WW2);
 extern double DisToOne(		MAT_D WW1);
@@ -121,10 +128,30 @@ int main()
 		//ResOut(W2);
 		if(diffW12<outer_eps) break;
 	}
-	cout<<"End output W1:"<<endl;
+	//start samplling
+	W2=Initial;
+	vector<int> Aton(Tseq,0);
+	double min_loss=MAX_NUMBER;
+		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
+			double step_length=1;
+			double the_loss=MAX_NUMBER;
+			SamplePhaseTwo(C,W1,W2,Y,step_length,Aton,the_loss);
+			if(min_loss>the_loss) min_loss=the_loss;
+			if(min_loss<outer_eps) break;
+		}
+
+	MAT_D WS(Initial);
+	for(int t=0; t<Tseq; t++){
+		int j=Aton[t];
+		WS[j][t]+=1;
+	}
+
+	/*cout<<"End output W1:"<<endl;
 	ResOut(W1,InSeq);
 	cout<<"End output W2:"<<endl;
-	ResOut(W2,InSeq);
+	ResOut(W2,InSeq);*/
+	cout<<"End output WS:"<<endl;
+	ResOut(WS,InSeq);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;
