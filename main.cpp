@@ -132,7 +132,7 @@ int main()
 	W2=Initial;
 	vector<int> Aton(Tseq,0);
 	double min_loss=MAX_NUMBER;
-		for(int Inner_iter=0; Inner_iter<Inner_num*10; Inner_iter++){
+		for(int Inner_iter=0; Inner_iter<Inner_num*100; Inner_iter++){
 			double step_length=1;
 			double the_loss=MAX_NUMBER;
 			vector<int> InAton(Tseq,0);
