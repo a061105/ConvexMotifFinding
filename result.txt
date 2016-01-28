@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-{\color{Brown}0}1
-{\color{Brown}0}2
-{\color{Brown	 	 		}0}3
-{\color{Brown	 	 		}1}4
-{\color{Brown	 	 		}1}5
-{\color{Brown	 	 		}0}1
-{\color{Brown	 	 		}0}2
-{\color{Brown	 	 		}0}3
-{\color{Brown	 	 		}1}4
-{\color{Brown	 	 		}1}5
-{\color{Brown	 	 		}0}1
-{\color{Brown	 	 		}0}2
-{\color{Brown	 	 		}0}3
-{\color{Brown	 	 		}1}4
-{\color{Brown	 	 		}1}5
-{\color{Brown	 	 		}0}6
-{\color{DarkOrchid	 	 	}0}1
-{\color{DarkOrchid	 	 	}0}2
-{\color{DarkOrchid	 	 	}1}3
-{\color{DarkOrchid	 	 	}1}4
-{\color{DarkOrchid	 	 	}1}5
-=======
 {\color{Gray	 }1}
 {\color{Gray	 }0}
 {\color{Gray	 }1}
