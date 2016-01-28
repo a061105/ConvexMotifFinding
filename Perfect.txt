@@ -1,72 +1,14 @@
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Gray	 }1}
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Blue	 	 		}0}
-{\color{Blue	 	 		}0}
-{\color{Blue	 	 		}1}
-{\color{Blue	 	 		}0}
-{\color{Blue	 	 		}1}
-{\color{CornflowerBlue	 }0}
-{\color{CornflowerBlue	 }1}
-{\color{CornflowerBlue	 }1}
-{\color{CornflowerBlue	 }1}
-{\color{CornflowerBlue	 }0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Gray	 }1}
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Yellow	 }1}
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Gray	 }1}
-{\color{Gray	 }1}
-{\color{Gray	 }0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Aquamarine	 }0}
-{\color{Aquamarine	 }0}
-{\color{Aquamarine	 }0}
-{\color{Aquamarine	 }1}
-{\color{Aquamarine	 }1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}0}
-{\color{Brown	 	 		}1}
+{\color{Gray}10110}
+{\color{Blue}00101}
+{\color{CornflowerBlue}01110}
+{\color{Brown}01001}
+{\color{Yellow}111111}
+{\color{Gray}10110}
+{\color{Brown}01001}
+{\color{Bittersweet}00100}
+{\color{Brown}01001}
+{\color{Yellow}111111}
+{\color{Gray}10110}
+{\color{Brown}01001}
+{\color{Aquamarine}00011}
+{\color{Brown}01001}
