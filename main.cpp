@@ -106,7 +106,6 @@ int main()
 	cout<<"Optimal is:"<<Opt_val<<endl;*/
 	//----------------------------------------------------------------------------
 	MAT_D Y(J1+J2,col1);  // initialize Y with all zeros
-	double diffW12=1.0;
 	// start rowlling
 	for(int Iter=0; Iter<update_num; Iter++){
 		// Optimization Phase One
@@ -124,13 +123,12 @@ int main()
 		}
 		//Optimization Phase Three
 		Y=UpdateY(W1,W2,Y);
-		diffW12=diff(W1,W2);
+		double diffW12=diff(W1,W2);
 		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<endl;
 		//ResOut(W2);
-		if(diffW12<=outer_eps) break;
+		if(diffW12<outer_eps) break;
 	}
-	//start sampllig
-	if(diffW12>outer_eps){
+	//start samplling
 	W2=Initial;
 	vector<int> Aton(Tseq,0);
 	double min_loss=MAX_NUMBER;
@@ -157,13 +155,8 @@ int main()
 	ResOut(W1,InSeq);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2,InSeq);*/
-		cout<<"End output WS:"<<endl;
-		ResOut(WS,InSeq);
-	}else{
-		cout<<"End output W1"<<endl;
-		ResOut(W1,InSeq);
-	}
-
+	cout<<"End output WS:"<<endl;
+	ResOut(WS,InSeq);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;
