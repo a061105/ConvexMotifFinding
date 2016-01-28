@@ -2,7 +2,7 @@
 
 void ResOut( MAT_D W1,
 			string InSeq){
-	ofstream myfile;
+	ofstream myfile,logfile;
 	vector<string> color;
 	string line;
 	ifstream colorfile ("color.txt");
@@ -15,6 +15,7 @@ void ResOut( MAT_D W1,
 		cout<<"Unable to open file";
 	}
 	myfile.open ("result.txt");
+	logfile.open(word);
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){
 		int Max_stat=0;
 		double Max_entree=0;
@@ -35,6 +36,7 @@ void ResOut( MAT_D W1,
 				int Inner_seq=(Max_stat%(2*L)+1)/2;
 				if(Inner_seq==0) Inner_seq=L;
 				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<"\n";
+				logfile<<"P_"<<AA<<"_"<<Inner_seq<<endl;
 			}else{// to be in shorter pattern
 				int charnum=(Max_stat-J1)/(2*Lmin)+KG1;
 				int inner_stat=(Max_stat-J1+1)%(2*Lmin);
@@ -43,11 +45,13 @@ void ResOut( MAT_D W1,
 				int Inner_seq=(inner_stat+1)/2;
 				if(Inner_seq==0) Inner_seq=Lmin;
 				myfile<<"{\\color{"<<color[AA]<<"}"<<One_or_zero<<"}"<<"\n";
+				logfile<<"P_"<<AA<<"_"<<Inner_seq<<endl;
 			}
 		}
 	}
 	cout<<endl;
 	myfile.close();
+	logfile.close();
 	return;
 }
 	
