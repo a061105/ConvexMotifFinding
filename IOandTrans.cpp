@@ -18,10 +18,8 @@ string Word2Bin(const string word){
 			}
 		}
 		if(word[p]==' '){
-			res.pop_back();
-			res.pop_back();
-			DNA.pop_back();
-			DNA.pop_back();
+			res.erase(res.end()-2,res.end());
+			DNA.erase(DNA.end()-2,DNA.end());
 		}
 	}
 	ofstream str;
