@@ -15,7 +15,7 @@ void ResOut( MAT_D W1,
 		cout<<"Unable to open file";
 	}
 	myfile.open ("result.txt");
-	logfile.open("word");
+	logfile.open(word);
 	for(int Digit_num=0; Digit_num<Tseq; Digit_num++){
 		int Max_stat=0;
 		double Max_entree=0;
