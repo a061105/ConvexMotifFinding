@@ -20,7 +20,7 @@ typedef vector<vector<double> > MAT_D;
 	const string word="veni vidi vici";
 	const int word_length=14,space_num=2;
 	const int L=5,Lmin=3;
-	const int KG1=32,KG2=4,Kopt=7;  // from 00000(means space) 00001(a) ... 11010(z)
+	const int KG1=32,KG2=8,Kopt=7;  // from 00000(means space) 00001(a) ... 11010(z)
 	const int J1=KG1*2*L+1,J2=KG2*2*Lmin,Tseq=word_length*L-2*space_num;
 	const int update_num=1000, Inner_num=30;
 	const double mu=0.3,cost_un=1.0,cost_mis=1.5;
