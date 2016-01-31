@@ -68,7 +68,7 @@ int main()
 	// add prefer for each pattern
 	for(int t=0; t<Tseq; t++){
 		for(int kk=0; kk<KG1; kk++){
-			int patnum=kk;
+			int patnum=kk+1;
 			C[2*L*kk+1][t]+=2*short_prefer*random;
 			C[2*L*kk+2][t]+=2*short_prefer*random;
 			for(int j=L; j>0; j--){
@@ -79,7 +79,7 @@ int main()
 			}
 		}
 		for(int kk=0; kk<KG2; kk++){
-			int patnum=kk;
+			int patnum=kk+1;
 			C[2*Lmin*kk+J1][t]+=2*short_prefer*random;
 			C[2*Lmin*kk+J1+1][t]+=2*short_prefer*random;
 			for(int j=Lmin; j>0; j--){

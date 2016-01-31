@@ -1,66 +1,74 @@
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
-{\color{OrangeRed	 	 	}0}
-{\color{OrangeRed	 	 	}1}
-{\color{OrangeRed	 	 	}0}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }1}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }1}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }0}
-{\color{CarnationPink	 }1}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{Plum	 }1}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}1}
-{\color{JungleGreen	 	 	}0}
-{\color{OrangeRed	 	 	}0}
-{\color{OrangeRed	 	 	}1}
-{\color{OrangeRed	 	 	}0}
-{\color{OrangeRed	 	 	}0}
-{\color{OrangeRed	 	 	}1}
-{\color{OrangeRed	 	 	}0}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
-{\color{Periwinkle	 }1}
-{\color{Periwinkle	 }0}
-{\color{Periwinkle	 }1}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}1}
+{\color{Black}1}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}
+{\color{Black}0}

@@ -59,7 +59,7 @@ int main()
 		for(int kk=0; kk<KG2; kk++){
 			for(int j=0; j<2*Lmin; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[2*KG1*L+(1+2*Lmin*kk)+j][t]=cost_mis;
+					C[J1+2*Lmin*kk+j][t]=cost_mis;
 				}
 			}
 		}
@@ -115,7 +115,7 @@ int main()
 			if(step_length<inner_eps) break;
 		}
 		//Optimization Phase Two
-	//	W2=Initial;
+		W2=Initial;
 		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			double step_length=2.0/(Inner_iter+2);
 			OptPhaseTwo(C,W1,W2,Y,step_length);
@@ -126,14 +126,13 @@ int main()
 		double diffW12=diff(W1,W2);
 		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<endl;
 		//ResOut(W2);
-		if(diffW12<=outer_eps) break;
+		if(diffW12<outer_eps) break;
 	}
-	//start sampllig
-	if(diffW12>outer_eps){
+	//start samplling
 	W2=Initial;
 	vector<int> Aton(Tseq,0);
 	double min_loss=MAX_NUMBER;
-		for(int Inner_iter=0; Inner_iter<Inner_num*100; Inner_iter++){
+		for(int Inner_iter=0; Inner_iter<Inner_num; Inner_iter++){
 			double step_length=1;
 			double the_loss=MAX_NUMBER;
 			vector<int> InAton(Tseq,0);
@@ -156,13 +155,8 @@ int main()
 	ResOut(W1,InSeq);
 	cout<<"End output W2:"<<endl;
 	ResOut(W2,InSeq);*/
-		cout<<"End output WS:"<<endl;
-		ResOut(WS,InSeq);
-	}else{
-		cout<<"End output W1"<<endl;
-		ResOut(W1,InSeq);
-	}
-
+	cout<<"End output WS:"<<endl;
+	ResOut(WS,InSeq);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W2)<<endl;
 	return 0;
