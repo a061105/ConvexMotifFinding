@@ -59,7 +59,7 @@ int main()
 		for(int kk=0; kk<KG2; kk++){
 			for(int j=0; j<2*Lmin; j++){
 				if(j%2!=dig){	// j odd assign to 0, j even assign to 1
-					C[2*KG1*L+(1+2*Lmin*kk)+j][t]=cost_mis;
+					C[J1+2*Lmin*kk+j][t]=cost_mis;
 				}
 			}
 		}
