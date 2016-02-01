@@ -5,7 +5,7 @@ string Word2Bin(const string word){
 	string DNA;
 	int L_char=L;
 	for(int p=0; p<word_length; p++){
-		int wp=word[p]-'a'+1;
+		int wp=word[p];
 		if(word[p]==' ') wp=(int)pow((double)2,L_char);
 		for(int l=L_char-1; l>=0; l--){
 			if(wp/(int)pow((double)2,l)){
@@ -22,8 +22,10 @@ string Word2Bin(const string word){
 		//	DNA.erase(DNA.end()-2,DNA.end());
 		}
 		if(word[p]=='i'){
-			res.erase(res.end()-2,res.end());
-			DNA.erase(DNA.end()-2,DNA.end());
+			res.erase(res.end()-L_char,res.end());
+			res+="01001";
+			DNA.erase(DNA.end()-L_char,DNA.end());
+			DNA+="AGAAG";
 		}
 	}
 	ofstream str;
