@@ -19,9 +19,9 @@ typedef vector<vector<double> > MAT_D;
 
 	const string word="veni vidi vici";
 	const int word_length=14,space_num=5;
-	const int L=9,Lmin=5;
-	const int KG1=512,KG2=32,Kopt=7;  // from 00000(means space) 00001(a) ... 11010(z)
-	const int J1=KG1*2*L+1,J2=KG2*2*Lmin,Tseq=word_length*L-4*space_num;
+	const int L=8,Lmin=5;
+	const int KG1=256,KG2=32,Kopt=7;  // from 00000(means space) 00001(a) ... 11010(z)
+	const int J1=KG1*2*L+1,J2=KG2*2*Lmin,Tseq=word_length*L-3*space_num;
 	const int update_num=100, Inner_num=50;
 	const double mu=0.3,cost_un=1.0,cost_mis=1.5;
 	const double prefer=0.5,short_prefer=0.00*prefer/(L+Lmin);
