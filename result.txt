@@ -1,17 +1,97 @@
-{\color{Bittersweet}0101}
-{\color{BlueViolet}1000}
-{\color{Bittersweet}0101}
-{\color{Apricot}0011}
-{\color{Orange}100010}
-{\color{WildStrawberry}111111}
-{\color{Bittersweet}0101}
-{\color{BlueViolet}1000}
-{\color{BlueViolet}1000}
-{\color{Aquamarine}0100}
-{\color{YellowOrange}0010}
-{\color{WildStrawberry}111111}
-{\color{Bittersweet}0101}
-{\color{BlueViolet}1000}
-{\color{BlueViolet}1000}
-{\color{Apricot}0011}
-{\color{YellowOrange}0010}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Orange	 }0}
+{\color{Orange	 }1}
+{\color{Orange	 }1}
+{\color{Orange	 }0}
+{\color{Orange	 }0}
+{\color{Orange	 }1}
+{\color{Orange	 }0}
+{\color{Orange	 }1}
+{\color{RawSienna	 	 	}0}
+{\color{RawSienna	 	 	}1}
+{\color{RawSienna	 	 	}1}
+{\color{RawSienna	 	 	}0}
+{\color{RawSienna	 	 	}1}
+{\color{RawSienna	 	 	}1}
+{\color{RawSienna	 	 	}1}
+{\color{RawSienna	 	 	}0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{OliveGreen	 	 	}0}
+{\color{OliveGreen	 	 	}1}
+{\color{OliveGreen	 	 	}1}
+{\color{OliveGreen	 	 	}0}
+{\color{OliveGreen	 	 	}0}
+{\color{OliveGreen	 	 	}1}
+{\color{OliveGreen	 	 	}0}
+{\color{OliveGreen	 	 	}0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{SkyBlue	 }1}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}1}
+{\color{Salmon	 	 		}0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{NavyBlue	 }0}
+{\color{NavyBlue	 }1}
+{\color{NavyBlue	 }1}
+{\color{NavyBlue	 }0}
+{\color{NavyBlue	 }0}
+{\color{NavyBlue	 }0}
+{\color{NavyBlue	 }1}
+{\color{NavyBlue	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
+{\color{Yellow	 }0}
+{\color{Yellow	 }0}
+{\color{Yellow	 }1}
