@@ -1,74 +1,17 @@
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Apricot	 	 		}0}
-{\color{Apricot	 	 		}0}
-{\color{Apricot	 	 		}1}
-{\color{Apricot	 	 		}1}
-{\color{Orange	 }1}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }0}
-{\color{Orange	 }1}
-{\color{Orange	 }0}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{Aquamarine	 }0}
-{\color{Aquamarine	 }1}
-{\color{Aquamarine	 }0}
-{\color{Aquamarine	 }0}
-{\color{YellowOrange}0}
-{\color{YellowOrange}0}
-{\color{YellowOrange}1}
-{\color{YellowOrange}0}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{WildStrawberry	 	 	}1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{Bittersweet	 	 		 }0}
-{\color{Bittersweet	 	 		 }1}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}1}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{BlueViolet	 	 	}0}
-{\color{Apricot	 	 		}0}
-{\color{Apricot	 	 		}0}
-{\color{Apricot	 	 		}1}
-{\color{Apricot	 	 		}1}
-{\color{YellowOrange}0}
-{\color{YellowOrange}0}
-{\color{YellowOrange}1}
-{\color{YellowOrange}0}
+{\color{Bittersweet}0101}
+{\color{BlueViolet}1000}
+{\color{Bittersweet}0101}
+{\color{Apricot}0011}
+{\color{Orange}100010}
+{\color{WildStrawberry}111111}
+{\color{Bittersweet}0101}
+{\color{BlueViolet}1000}
+{\color{BlueViolet}1000}
+{\color{Aquamarine}0100}
+{\color{YellowOrange}0010}
+{\color{WildStrawberry}111111}
+{\color{Bittersweet}0101}
+{\color{BlueViolet}1000}
+{\color{BlueViolet}1000}
+{\color{Apricot}0011}
+{\color{YellowOrange}0010}
