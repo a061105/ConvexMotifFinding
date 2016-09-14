@@ -23,6 +23,7 @@ extern double diff(			MAT_D WW1,
 							MAT_D WW2);
 extern double DisToOne(		MAT_D WW1);
 extern string Word2Bin(const string word);
+extern void printW(MAT_D W);
 
 int main()
 {
@@ -45,12 +46,12 @@ int main()
 	for(int k=0; k<KG; k++){
 		for(int cha=0; cha<word_length; cha++){
 			//adderr[cha][k]=eps*random;
-			adderr[cha][k]+=2*eps*k;
+			adderr[cha][k]+=0*2*eps*k;
 		}
 	}
-	
-	
-	// continue construct C 
+
+
+	// continue construct C
 	for(int t=0; t<Tseq; t++){
 		int dig=0;
 		int cha=t/L;
@@ -65,7 +66,7 @@ int main()
 			}
 		}
 	}
-	
+
 
 	//----------------------initialize W2, all optimal--------------------------
 	/*MAT_D Wopt(J,col1);
@@ -100,14 +101,14 @@ int main()
 		Y=UpdateY(W1,W2,Y);
 		//cout<<"-----End Outer Step"<<Iter+1<<"-----"<<endl;
 		double diffW12=diff(W1,W2);
-		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<W1[1][0]<<" "<<W1[9][0]<<endl;
+		cout<<"L:"<<LossfuncW1(C,W1)<<"_"<<LossfuncW1(C,W2)<<" "<<"D:"<<diffW12<<" "<<endl;
 		//ResOut(W2);
 		if(diffW12<1e-5) break;
 	}
 	cout<<"End output W1:"<<endl;
-	ResOut(W1);
+	printW(W1);
 	cout<<"End output W2:"<<endl;
-	ResOut(W2);
+	printW(W2);
 	//cout<<"Optimal loss val:"<<LossfuncW1(C,Wopt)<<endl;
 	cout<<"Max entree distance to one:"<<DisToOne(W1)<<endl;
 	return 0;
